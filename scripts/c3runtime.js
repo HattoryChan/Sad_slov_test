@@ -4120,6 +4120,29 @@ await this._storage.keys();await this.ScheduleTriggers(async()=>{this._keyNamesL
 }
 
 {
+'use strict';{const C3=self.C3;C3.Plugins.Mouse=class MousePlugin extends C3.SDKPluginBase{constructor(opts){super(opts)}Release(){super.Release()}}}
+{const C3=self.C3;const C3X=self.C3X;C3.Plugins.Mouse.Type=class MouseType extends C3.SDKTypeBase{constructor(objectClass){super(objectClass)}Release(){super.Release()}OnCreate(){}GetScriptInterfaceClass(){return self.IMouseObjectType}};let mouseObjectType=null;function GetMouseSdkInstance(){return mouseObjectType.GetSingleGlobalInstance().GetSdkInstance()}self.IMouseObjectType=class IMouseObjectType extends self.IObjectClass{constructor(objectType){super(objectType);mouseObjectType=objectType;objectType.GetRuntime()._GetCommonScriptInterfaces().mouse=
+this}getMouseX(layerNameOrNumber){return GetMouseSdkInstance().GetMousePositionForLayer(layerNameOrNumber)[0]}getMouseY(layerNameOrNumber){return GetMouseSdkInstance().GetMousePositionForLayer(layerNameOrNumber)[1]}getMousePosition(layerNameOrNumber){return GetMouseSdkInstance().GetMousePositionForLayer(layerNameOrNumber)}isMouseButtonDown(button){return GetMouseSdkInstance().IsMouseButtonDown(button)}setCursorStyle(cursorStyle){C3X.RequireString(cursorStyle);GetMouseSdkInstance().SetCursorStyle(cursorStyle)}setCursorObjectClass(iObjectClass){const sdkInst=
+GetMouseSdkInstance();const runtime=sdkInst.GetRuntime();const objectClass=runtime._UnwrapIObjectClass(iObjectClass);sdkInst.SetCursorObjectClass(objectClass)}}}
+{const C3=self.C3;const DOM_COMPONENT_ID="mouse";let lastSetCursor=null;C3.Plugins.Mouse.Instance=class MouseInstance extends C3.SDKInstanceBase{constructor(inst,properties){super(inst,DOM_COMPONENT_ID);this._buttonMap=[false,false,false];this._mouseXcanvas=0;this._mouseYcanvas=0;this._triggerButton=0;this._triggerType=0;this._triggerDir=0;this._wheelDeltaX=0;this._wheelDeltaY=0;this._wheelDeltaZ=0;this._hasPointerLock=false;this._movementX=0;this._movementY=0;this.AddDOMMessageHandlers([["pointer-lock-change",
+e=>this._OnPointerLockChange(e)],["pointer-lock-error",e=>this._OnPointerLockError(e)]]);const rt=this.GetRuntime().Dispatcher();this._disposables=new C3.CompositeDisposable(C3.Disposable.From(rt,"pointermove",e=>this._OnPointerMove(e.data)),C3.Disposable.From(rt,"pointerdown",e=>this._OnPointerDown(e.data)),C3.Disposable.From(rt,"pointerup",e=>this._OnPointerUp(e.data)),C3.Disposable.From(rt,"dblclick",e=>this._OnDoubleClick(e.data)),C3.Disposable.From(rt,"wheel",e=>this._OnMouseWheel(e.data)),C3.Disposable.From(rt,
+"window-blur",()=>this._OnWindowBlur()))}Release(){super.Release()}_OnPointerDown(e){if(e["pointerType"]!=="mouse")return;this._mouseXcanvas=e["pageX"]-this._runtime.GetCanvasClientX();this._mouseYcanvas=e["pageY"]-this._runtime.GetCanvasClientY();this._CheckButtonChanges(e["lastButtons"],e["buttons"])}_OnPointerMove(e){this._movementX=e["movementX"];this._movementY=e["movementY"];this.Trigger(C3.Plugins.Mouse.Cnds.OnMovement);this._movementX=0;this._movementY=0;if(e["pointerType"]!=="mouse")return;
+this._mouseXcanvas=e["pageX"]-this._runtime.GetCanvasClientX();this._mouseYcanvas=e["pageY"]-this._runtime.GetCanvasClientY();this._CheckButtonChanges(e["lastButtons"],e["buttons"])}_OnPointerUp(e){if(e["pointerType"]!=="mouse")return;this._CheckButtonChanges(e["lastButtons"],e["buttons"])}_CheckButtonChanges(lastButtons,buttons){this._CheckButtonChange(lastButtons,buttons,1,0);this._CheckButtonChange(lastButtons,buttons,4,1);this._CheckButtonChange(lastButtons,buttons,2,2)}_CheckButtonChange(lastButtons,
+buttons,checkButtonFlag,resultButton){if(!(lastButtons&checkButtonFlag)&&buttons&checkButtonFlag)this._OnMouseDown(resultButton);else if(lastButtons&checkButtonFlag&&!(buttons&checkButtonFlag))this._OnMouseUp(resultButton)}_OnMouseDown(button){this._buttonMap[button]=true;this.Trigger(C3.Plugins.Mouse.Cnds.OnAnyClick);this._triggerButton=button;this._triggerType=0;this.Trigger(C3.Plugins.Mouse.Cnds.OnClick);this.Trigger(C3.Plugins.Mouse.Cnds.OnObjectClicked)}_OnMouseUp(button){if(!this._buttonMap[button])return;
+this._buttonMap[button]=false;this._triggerButton=button;this.Trigger(C3.Plugins.Mouse.Cnds.OnRelease)}_OnDoubleClick(e){this._triggerButton=e["button"];this._triggerType=1;this.Trigger(C3.Plugins.Mouse.Cnds.OnClick);this.Trigger(C3.Plugins.Mouse.Cnds.OnObjectClicked)}_OnMouseWheel(e){this._triggerDir=e["deltaY"]<0?1:0;this._wheelDeltaX=e["deltaX"];this._wheelDeltaY=e["deltaY"];this._wheelDeltaZ=e["deltaZ"];this.Trigger(C3.Plugins.Mouse.Cnds.OnWheel)}_OnWindowBlur(){for(let i=0,len=this._buttonMap.length;i<
+len;++i){if(!this._buttonMap[i])return;this._buttonMap[i]=false;this._triggerButton=i;this.Trigger(C3.Plugins.Mouse.Cnds.OnRelease)}}GetMousePositionForLayer(layerNameOrNumber){const layout=this._runtime.GetMainRunningLayout();const x=this._mouseXcanvas;const y=this._mouseYcanvas;if(typeof layerNameOrNumber==="undefined"){const layer=layout.GetLayerByIndex(0);return layer.CanvasCssToLayer_DefaultTransform(x,y)}else{const layer=layout.GetLayer(layerNameOrNumber);if(layer)return layer.CanvasCssToLayer(x,
+y);else return[0,0]}}IsMouseButtonDown(button){button=Math.floor(button);return!!this._buttonMap[button]}_IsMouseOverCanvas(){return this._mouseXcanvas>=0&&this._mouseYcanvas>=0&&this._mouseXcanvas<this._runtime.GetCanvasCssWidth()&&this._mouseYcanvas<this._runtime.GetCanvasCssHeight()}SetCursorStyle(cursorStyle){if(lastSetCursor===cursorStyle)return;lastSetCursor=cursorStyle;this.PostToDOM("cursor",cursorStyle)}async SetCursorObjectClass(objectClass){if(C3.Platform.IsMobile||!objectClass)return;
+const inst=objectClass.GetFirstPicked();if(!inst)return;const wi=inst.GetWorldInfo();const imageInfo=inst.GetCurrentImageInfo();if(!wi||!imageInfo)return;if(lastSetCursor===imageInfo)return;lastSetCursor=imageInfo;const blobUrl=await imageInfo.ExtractImageToBlobURL();const cursorStyle=`url(${blobUrl}) ${Math.round(wi.GetOriginX()*imageInfo.GetWidth())} ${Math.round(wi.GetOriginY()*imageInfo.GetHeight())}, auto`;this.PostToDOM("cursor",cursorStyle)}_OnPointerLockChange(e){this._UpdatePointerLockState(e["has-pointer-lock"])}_OnPointerLockError(e){this._UpdatePointerLockState(e["has-pointer-lock"]);
+this.Trigger(C3.Plugins.Mouse.Cnds.OnPointerLockError)}_UpdatePointerLockState(hasPointerLock){if(this._hasPointerLock===hasPointerLock)return;this._hasPointerLock=hasPointerLock;if(this._hasPointerLock)this.Trigger(C3.Plugins.Mouse.Cnds.OnPointerLocked);else this.Trigger(C3.Plugins.Mouse.Cnds.OnPointerUnlocked)}GetDebuggerProperties(){const prefix="plugins.mouse";return[{title:prefix+".name",properties:[{name:prefix+".debugger.absolute-position",value:this._mouseXcanvas+","+this._mouseYcanvas},{name:prefix+
+".debugger.left-button",value:this._buttonMap[0]},{name:prefix+".debugger.middle-button",value:this._buttonMap[1]},{name:prefix+".debugger.right-button",value:this._buttonMap[2]}]},{title:prefix+".debugger.position-on-each-layer",properties:this._runtime.GetMainRunningLayout().GetLayers().map(layer=>({name:"$"+layer.GetName(),value:layer.CanvasCssToLayer(this._mouseXcanvas,this._mouseYcanvas).join(", ")}))}]}}}
+{const C3=self.C3;C3.Plugins.Mouse.Cnds={OnClick(button,type){return this._triggerButton===button&&this._triggerType===type},OnAnyClick(){return true},IsButtonDown(button){return this._buttonMap[button]},OnRelease(button){return this._triggerButton===button},IsOverObject(objectClass){if(!this._IsMouseOverCanvas())return false;const cnd=this._runtime.GetCurrentCondition();const isInverted=cnd.IsInverted();const mx=this._mouseXcanvas;const my=this._mouseYcanvas;return C3.xor(this._runtime.GetCollisionEngine().TestAndSelectCanvasPointOverlap(objectClass,
+mx,my,isInverted),isInverted)},OnObjectClicked(button,type,objectClass){if(button!==this._triggerButton||type!==this._triggerType)return false;if(!this._IsMouseOverCanvas())return false;const mx=this._mouseXcanvas;const my=this._mouseYcanvas;return this._runtime.GetCollisionEngine().TestAndSelectCanvasPointOverlap(objectClass,mx,my,false)},OnWheel(dir){return dir===2||this._triggerDir===dir},OnPointerLocked(){return true},OnPointerUnlocked(){return true},OnPointerLockError(){return true},HasPointerLock(){return this._hasPointerLock},
+OnMovement(){return true}}}{const C3=self.C3;const CURSOR_STYLES=["auto","pointer","text","crosshair","move","help","wait","none"];C3.Plugins.Mouse.Acts={SetCursor(c){this.SetCursorStyle(CURSOR_STYLES[c])},SetCursorSprite(objectClass){this.SetCursorObjectClass(objectClass)},RequestPointerLock(){this._PostToDOMMaybeSync("request-pointer-lock")},ReleasePointerLock(){this.PostToDOM("release-pointer-lock")}}}
+{const C3=self.C3;C3.Plugins.Mouse.Exps={X(layerParam){return this.GetMousePositionForLayer(layerParam)[0]},Y(layerParam){return this.GetMousePositionForLayer(layerParam)[1]},AbsoluteX(){return this._mouseXcanvas},AbsoluteY(){return this._mouseYcanvas},MovementX(){return this._movementX},MovementY(){return this._movementY},WheelDeltaX(){return this._wheelDeltaX},WheelDeltaY(){return this._wheelDeltaY},WheelDeltaZ(){return this._wheelDeltaZ}}};
+
+}
+
+{
 'use strict';{const C3=self.C3;C3.Behaviors.Tween=class TweenBehavior extends C3.SDKBehaviorBase{constructor(opts){super(opts)}Release(){super.Release()}}}{const C3=self.C3;C3.Behaviors.Tween.Type=class TweenType extends C3.SDKBehaviorTypeBase{constructor(behaviorType){super(behaviorType)}Release(){super.Release()}OnCreate(){}}}
 {const C3=self.C3;const NAMESPACE=C3.Behaviors.Tween;const ENABLED=0;NAMESPACE.Instance=class TweenInstance extends C3.SDKBehaviorInstanceBase{constructor(behInst,properties){super(behInst);this._allowMultiple=false;this._enabled=true;if(properties){this._allowMultiple=false;this._enabled=!!properties[ENABLED]}this._activeTweens=new Map;this._disabledTweens=[];this._waitingForReleaseTweens=new Map;this._finishingTween=null;this._activeTweensJson=null;this._disabledTweensJson=null;this._waitingForReleaseTweensJson=
 null;this._finishingTweenName="";if(this._enabled)this._StartTicking2();this._afterLoad=e=>this._OnAfterLoad(e);this.GetRuntime().Dispatcher().addEventListener("afterload",this._afterLoad)}Release(){this.GetRuntime().Dispatcher().removeEventListener("afterload",this._afterLoad);this._afterLoad=null;if(this._finishingTween){this.ReleaseAndCompleteTween(this._finishingTween);this._finishingTween=null}this.ReleaseAndCompleteTweens();this._tweens=null;this.ClearDisabledList();this._disabledTweens=null;
@@ -4285,7 +4308,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Date,
 		C3.Plugins.LocalStorage,
 		C3.Plugins.Eponesh_GameScore,
+		C3.Plugins.Mouse,
 		C3.Plugins.System.Cnds.OnLayoutStart,
+		C3.Plugins.Spritefont2.Acts.Destroy,
 		C3.Plugins.Browser.Cnds.IsPortraitLandscape,
 		C3.Plugins.System.Acts.SetLayerScale,
 		C3.Plugins.System.Exps.viewportwidth,
@@ -4319,7 +4344,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Button.Acts.SetBlur,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Cnds.TriggerOnce,
-		C3.Behaviors.Anchor.Acts.SetEnabled,
+		C3.Plugins.Sprite.Acts.SetY,
 		C3.Plugins.Sprite.Acts.SetX,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Behaviors.Tween.Acts.TweenOneProperty,
@@ -4384,17 +4409,24 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.PickRandom,
 		C3.Plugins.Text.Acts.SetBoolInstanceVar,
 		C3.Plugins.Arr.Cnds.CompareX,
+		C3.Plugins.Spritefont2.Cnds.IsBoolInstanceVarSet,
+		C3.Plugins.Spritefont2.Cnds.CompareText,
+		C3.Plugins.Spritefont2.Acts.SetDefaultColor,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
+		C3.Plugins.Spritefont2.Acts.SetSize,
+		C3.Plugins.Spritefont2.Acts.SetScale,
+		C3.Plugins.Spritefont2.Acts.SetBoolInstanceVar,
 		C3.Plugins.System.Exps.int,
-		C3.Plugins.System.Cnds.PickLastCreated,
 		C3.Plugins.Touch.Cnds.IsTouchingObject,
+		C3.Behaviors.Anchor.Acts.SetEnabled,
+		C3.Plugins.Touch.Cnds.OnTapGesture,
+		C3.Plugins.Sprite.Cnds.IsOnScreen,
 		C3.Plugins.Button.Cnds.OnClicked,
 		C3.Plugins.Button.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Button.Acts.Destroy,
-		C3.Plugins.System.Acts.GoToLayout,
+		C3.Plugins.System.Cnds.PickLastCreated,
 		C3.Plugins.Button.Acts.SetBoolInstanceVar,
 		C3.Plugins.Sprite.Cnds.CompareOpacity,
-		C3.Plugins.Spritefont2.Acts.SetScale,
 		C3.Plugins.Spritefont2.Exps.CharacterScale,
 		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
 		C3.Plugins.Eponesh_GameScore.Acts.AdsShowRewarded,
@@ -4402,13 +4434,16 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Acts.PaymentsPurchase,
 		C3.Plugins.Eponesh_GameScore.Cnds.OnPaymentsPurchase,
 		C3.Plugins.Sprite.Acts.SetVisible,
+		C3.Plugins.Mouse.Cnds.IsOverObject,
 		C3.Plugins.Sprite.Cnds.OnCreated,
 		C3.Plugins.System.Exps.max,
+		C3.Plugins.Mouse.Acts.SetCursor,
 		C3.Plugins.Date.Exps.Parse,
 		C3.Plugins.Eponesh_GameScore.Exps.ServerTime,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSetFlag,
 		C3.Plugins.Button.Acts.SetVisible,
 		C3.Plugins.Button.Acts.SetCSSStyle,
+		C3.Plugins.System.Acts.GoToLayout,
 		C3.Behaviors.DragnDrop.Cnds.OnDragStart,
 		C3.Behaviors.DragnDrop.Cnds.OnDrop,
 		C3.Behaviors.Pin.Acts.Unpin,
@@ -4510,6 +4545,15 @@ self.C3_JsPropNameTable = [
 	{TextForButtons: 0},
 	{coin: 0},
 	{shadowForProcressbar: 0},
+	{bord_settings: 0},
+	{musik: 0},
+	{On: 0},
+	{bg_slider: 0},
+	{bgSettings: 0},
+	{slider: 0},
+	{TextForSettings: 0},
+	{TextForSettings2: 0},
+	{CLOSEButton: 0},
 	{AJAX: 0},
 	{Browser: 0},
 	{check_words: 0},
@@ -4523,6 +4567,9 @@ self.C3_JsPropNameTable = [
 	{topic_words1: 0},
 	{GameScore: 0},
 	{Array: 0},
+	{Mouse: 0},
+	{posForBackButton: 0},
+	{button: 0},
 	{get_money: 0},
 	{blockX: 0},
 	{blockY: 0},
@@ -4663,6 +4710,12 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => ((f0("Layer 1") / f1("Layer 1")) * 1.6);
 		},
+		() => "up_icon",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => ((f0("Layer 1") / f1("Layer 1")) * 1.35);
+		},
 		() => "procress_bar",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -4765,8 +4818,9 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 0.1,
 		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => add(26, add(55, multiply(subtract(f0("words_notdo"), 30), (55 / 30))));
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => add((n0.ExpObject() - 55), add(55, multiply(subtract(f1("words_notdo"), 30), (55 / 30))));
 		},
 		() => "1",
 		p => {
@@ -5126,51 +5180,95 @@ self.C3_ExpressionFuncs = [
 			return () => ((v0.GetValue() + (50 * v1.GetValue())) - 50);
 		},
 		() => 36,
+		() => "settings1",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => f0((f1("settings")).toString(), 0, 1);
+		},
+		() => 522,
+		() => "2",
+		() => 438,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => f0((f1("settings")).toString(), 1, 1);
+		},
+		() => "выкл",
+		() => 11904453,
+		() => "вкл",
+		() => 16777215,
+		() => 220,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (f0("up_icon") * 2);
+		},
+		() => 352,
+		() => 329,
+		() => 201,
+		() => 42,
+		() => "Настройки",
+		() => 0.55,
+		() => 341,
+		() => 109,
+		() => 37,
+		() => "Музыка",
+		() => 0.39,
+		() => 287,
+		() => 109.279169,
+		() => "Звуки",
+		() => 481,
+		() => 444,
+		() => 183,
+		() => 520,
+		() => 66,
+		() => 19,
+		() => 254,
+		() => 54.646552,
+		() => 58.849603,
 		() => "touch_button",
-		() => 285,
-		() => 125,
-		() => 290,
-		() => 469,
-		() => 232,
-		() => 70,
-		() => 147,
-		() => 495,
-		() => 31,
-		() => 493,
-		() => 436.940179,
-		() => 381.712744,
-		() => 149.991733,
-		() => "Вернуться",
-		() => 266.050141,
-		() => 381.815677,
-		() => "Выйти",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => f0(f1("off_ad"));
 		},
-		() => 340,
-		() => 305,
-		() => 175,
-		() => "Убрать рекламу",
 		() => 35,
 		() => 38,
 		() => 0.05,
-		() => 42,
-		() => 489,
-		() => -145,
-		() => 494,
+		() => "settings",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => ("2" + f0((f1("settings")).toString(), 1, 1));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => ("1" + f0((f1("settings")).toString(), 1, 1));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (f0((f1("settings")).toString(), 0, 1) + "2");
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (f0((f1("settings")).toString(), 0, 1) + "1");
+		},
 		() => 480,
 		() => -175,
 		() => 570,
 		() => -255,
-		() => 441,
 		() => 260,
 		() => 275,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => add(300, multiply(subtract(f0("words_notdo"), 20), (300 / 20)));
 		},
+		() => 340,
+		() => 175,
+		() => "Вернуться",
 		() => 135,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5199,7 +5297,7 @@ self.C3_ExpressionFuncs = [
 			return () => subtract(f0("bust1_count"), 1);
 		},
 		() => 84,
-		() => 109,
+		() => "ShowSelectBlock",
 		() => "ad",
 		() => -330,
 		() => "lvl",
@@ -5262,12 +5360,10 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => f0(f1());
 		},
-		() => 59,
-		() => 66,
 		() => "buy",
 		() => 395,
 		() => "off_ad",
-		() => "settings",
+		() => "touch_button_menu",
 		() => "daily reward",
 		() => 274.246194,
 		() => 97.150965,
@@ -5294,6 +5390,7 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 457,
 		() => -214,
+		() => 59,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("flowers");
@@ -5319,7 +5416,23 @@ self.C3_ExpressionFuncs = [
 		() => 95,
 		() => 91,
 		() => 0.12,
-		() => "settings_book"
+		() => "settings_book",
+		() => 285,
+		() => 125,
+		() => 290,
+		() => 469,
+		() => 232,
+		() => 70,
+		() => 147,
+		() => 495,
+		() => 31,
+		() => 493,
+		() => 305,
+		() => "Убрать рекламу",
+		() => 489,
+		() => -145,
+		() => 494,
+		() => 441
 ];
 
 
