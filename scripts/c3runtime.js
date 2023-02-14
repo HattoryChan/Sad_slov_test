@@ -4311,6 +4311,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Mouse,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Spritefont2.Acts.Destroy,
+		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.Browser.Cnds.IsPortraitLandscape,
 		C3.Plugins.System.Acts.SetLayerScale,
 		C3.Plugins.System.Exps.viewportwidth,
@@ -4322,9 +4323,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.Height,
 		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.Text.Acts.Destroy,
-		C3.Plugins.System.Acts.SetVar,
 		C3.Plugins.System.Acts.SetGroupActive,
-		C3.Plugins.Button.Acts.SetText,
 		C3.Plugins.AJAX.Acts.RequestFile,
 		C3.Plugins.System.Acts.WaitForPreviousActions,
 		C3.Plugins.Arr.Acts.JSONLoad,
@@ -4335,12 +4334,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Sprite.Exps.Y,
-		C3.Plugins.Text.Acts.SetPos,
-		C3.Plugins.Text.Exps.X,
-		C3.Plugins.Text.Exps.Y,
-		C3.Plugins.System.Exps.layerscale,
+		C3.Plugins.Spritefont2.Acts.SetPos,
+		C3.Plugins.Spritefont2.Exps.X,
 		C3.Plugins.Spritefont2.Exps.Y,
-		C3.Plugins.Text.Acts.SetY,
+		C3.Plugins.System.Exps.layerscale,
 		C3.Plugins.Button.Acts.SetBlur,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Cnds.TriggerOnce,
@@ -4381,83 +4378,95 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.PickInstVarHiLow,
 		C3.Behaviors.Tween.Cnds.IsPlaying,
 		C3.Plugins.System.Cnds.CompareVar,
-		C3.Plugins.Button.Acts.SetSize,
-		C3.Plugins.Text.Acts.MoveToTop,
-		C3.Plugins.Text.Acts.SetText,
-		C3.Plugins.System.Exps.choose,
+		C3.Plugins.Spritefont2.Acts.SetSize,
+		C3.Plugins.Spritefont2.Acts.SetScale,
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
 		C3.Plugins.System.Acts.Signal,
 		C3.Plugins.System.Exps.tokencount,
 		C3.Plugins.System.Exps.tokenat,
-		C3.Plugins.Text.Acts.SetOpacity,
-		C3.Plugins.Text.Acts.SetInstanceVar,
+		C3.Plugins.Spritefont2.Acts.SetInstanceVar,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.System.Cnds.While,
 		C3.Plugins.System.Cnds.PickNth,
 		C3.Plugins.System.Exps.loopindex,
-		C3.Plugins.Text.Cnds.CompareInstanceVar,
-		C3.Plugins.Text.Cnds.IsBoolInstanceVarSet,
-		C3.Plugins.Text.Acts.SetFontColor,
+		C3.Plugins.Spritefont2.Cnds.CompareInstanceVar,
+		C3.Plugins.Spritefont2.Cnds.IsBoolInstanceVarSet,
+		C3.Plugins.Spritefont2.Acts.SetDefaultColor,
 		C3.Plugins.System.Exps.find,
+		C3.Plugins.Button.Acts.SetText,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
 		C3.Plugins.Touch.Cnds.IsInTouch,
 		C3.Plugins.Touch.Exps.X,
 		C3.Plugins.Touch.Exps.Y,
 		C3.Plugins.System.Cnds.IsBetweenAngles,
 		C3.Behaviors.Tween.Cnds.IsAnyPlaying,
-		C3.Plugins.Text.Cnds.CompareOpacity,
+		C3.Plugins.System.Exps.choose,
+		C3.Plugins.Spritefont2.Cnds.CompareOpacity,
 		C3.Plugins.System.Cnds.PickRandom,
-		C3.Plugins.Text.Acts.SetBoolInstanceVar,
-		C3.Plugins.Arr.Cnds.CompareX,
-		C3.Plugins.Spritefont2.Cnds.IsBoolInstanceVarSet,
-		C3.Plugins.Spritefont2.Cnds.CompareText,
-		C3.Plugins.Spritefont2.Acts.SetDefaultColor,
-		C3.Plugins.Touch.Cnds.OnTapGestureObject,
-		C3.Plugins.Spritefont2.Acts.SetSize,
-		C3.Plugins.Spritefont2.Acts.SetScale,
 		C3.Plugins.Spritefont2.Acts.SetBoolInstanceVar,
+		C3.Plugins.Arr.Cnds.CompareX,
+		C3.Plugins.Spritefont2.Cnds.CompareText,
+		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.System.Exps.int,
 		C3.Plugins.Touch.Cnds.IsTouchingObject,
 		C3.Behaviors.Anchor.Acts.SetEnabled,
 		C3.Plugins.Touch.Cnds.OnTapGesture,
 		C3.Plugins.Sprite.Cnds.IsOnScreen,
+		C3.Plugins.Sprite.Cnds.CompareOpacity,
 		C3.Plugins.Button.Cnds.OnClicked,
 		C3.Plugins.Button.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Button.Acts.Destroy,
+		C3.Plugins.Text.Acts.SetPos,
 		C3.Plugins.System.Cnds.PickLastCreated,
-		C3.Plugins.Button.Acts.SetBoolInstanceVar,
-		C3.Plugins.Sprite.Cnds.CompareOpacity,
 		C3.Plugins.Spritefont2.Exps.CharacterScale,
-		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
-		C3.Plugins.Eponesh_GameScore.Acts.AdsShowRewarded,
-		C3.Plugins.Eponesh_GameScore.Cnds.OnAdsRewardedClose,
-		C3.Plugins.Eponesh_GameScore.Acts.PaymentsPurchase,
-		C3.Plugins.Eponesh_GameScore.Cnds.OnPaymentsPurchase,
-		C3.Plugins.Sprite.Acts.SetVisible,
-		C3.Plugins.Mouse.Cnds.IsOverObject,
-		C3.Plugins.Sprite.Cnds.OnCreated,
-		C3.Plugins.System.Exps.max,
-		C3.Plugins.Mouse.Acts.SetCursor,
+		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Date.Exps.Parse,
 		C3.Plugins.Eponesh_GameScore.Exps.ServerTime,
-		C3.Plugins.Eponesh_GameScore.Acts.PlayerSetFlag,
-		C3.Plugins.Button.Acts.SetVisible,
-		C3.Plugins.Button.Acts.SetCSSStyle,
-		C3.Plugins.System.Acts.GoToLayout,
+		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
+		C3.Plugins.Eponesh_GameScore.Acts.AdsShowRewarded,
+		C3.Plugins.Eponesh_GameScore.Acts.PaymentsPurchase,
+		C3.Plugins.Eponesh_GameScore.Cnds.OnPaymentsPurchase,
+		C3.Plugins.Eponesh_GameScore.Cnds.OnAdsRewardedReward,
+		C3.Plugins.Sprite.Acts.SetVisible,
+		C3.Plugins.Mouse.Cnds.IsOverObject,
+		C3.Plugins.Mouse.Cnds.IsButtonDown,
+		C3.Plugins.Sprite.Cnds.OnCreated,
+		C3.Plugins.Button.Acts.SetSize,
+		C3.Plugins.Text.Acts.MoveToTop,
+		C3.Plugins.Text.Acts.SetText,
+		C3.Plugins.System.Exps.max,
+		C3.Plugins.Mouse.Acts.SetCursor,
+		C3.Plugins.System.Cnds.ForEach,
+		C3.Plugins.System.Cnds.PickByComparison,
+		C3.Plugins.Sprite.Cnds.IsAnimPlaying,
+		C3.Plugins.System.Acts.CreateObjectByName,
+		C3.Plugins.Sprite.Acts.ZMoveToObject,
+		C3.Plugins.Spritefont2.Acts.SetAngle,
+		C3.Plugins.Sprite.Cnds.OnDestroyed,
+		C3.Plugins.Spritefont2.Exps.Text,
+		C3.Plugins.Spritefont2.Acts.MoveToTop,
+		C3.Plugins.Sprite.Acts.MoveToTop,
 		C3.Behaviors.DragnDrop.Cnds.OnDragStart,
 		C3.Behaviors.DragnDrop.Cnds.OnDrop,
 		C3.Behaviors.Pin.Acts.Unpin,
 		C3.Behaviors.Tween.Acts.SetEnabled,
 		C3.Behaviors.DragnDrop.Acts.SetEnabled,
-		C3.Plugins.Sprite.Acts.MoveToTop,
 		C3.Plugins.Sprite.Cnds.CompareWidth,
 		C3.Plugins.Sprite.Cnds.CompareHeight,
-		C3.Plugins.System.Cnds.PickByComparison
+		C3.Plugins.Button.Acts.SetVisible
 	];
 };
 self.C3_JsPropNameTable = [
-	{bg: 0},
 	{Variable1: 0},
+	{flowers00: 0},
+	{flowers10: 0},
+	{flowers20: 0},
+	{flowers30: 0},
+	{flowers40: 0},
+	{flowerbed1: 0},
+	{flowerbed2: 0},
+	{flowersbad3: 0},
+	{bg: 0},
 	{Variable2: 0},
 	{Tween: 0},
 	{Anchor: 0},
@@ -4554,6 +4563,43 @@ self.C3_JsPropNameTable = [
 	{TextForSettings: 0},
 	{TextForSettings2: 0},
 	{CLOSEButton: 0},
+	{"2x": 0},
+	{bgWin: 0},
+	{bord_win: 0},
+	{drop: 0},
+	{iconWin: 0},
+	{nextLvl: 0},
+	{posForBackButton: 0},
+	{coin2: 0},
+	{SpriteFont: 0},
+	{bgItemsShop: 0},
+	{buttonBuyCoin: 0},
+	{coin1: 0},
+	{coin21: 0},
+	{coin3: 0},
+	{coin4: 0},
+	{TextForButtonsShop: 0},
+	{TextForShopTop: 0},
+	{iconForShop: 0},
+	{iconForShop2: 0},
+	{TextForShopDown: 0},
+	{buttonDailyReward: 0},
+	{dailyCoin1: 0},
+	{dailyCoin2: 0},
+	{dailyCoin3: 0},
+	{dailyCoin4: 0},
+	{dailyCoin5: 0},
+	{dailyCoin6: 0},
+	{dailyCoin7: 0},
+	{darkWindow: 0},
+	{lo: 0},
+	{topIconDailyReward: 0},
+	{buyFlowersBord: 0},
+	{iconAD: 0},
+	{IconAd2: 0},
+	{star: 0},
+	{starboard: 0},
+	{textForFlowers: 0},
 	{AJAX: 0},
 	{Browser: 0},
 	{check_words: 0},
@@ -4568,8 +4614,10 @@ self.C3_JsPropNameTable = [
 	{GameScore: 0},
 	{Array: 0},
 	{Mouse: 0},
-	{posForBackButton: 0},
 	{button: 0},
+	{dailycoin: 0},
+	{flowerbad: 0},
+	{flowers: 0},
 	{get_money: 0},
 	{blockX: 0},
 	{blockY: 0},
@@ -4704,31 +4752,35 @@ function or(l, r)
 }
 
 self.C3_ExpressionFuncs = [
+		() => 0,
+		() => 202,
+		() => 25,
 		() => "Layer 1",
+		() => 1,
+		() => "up_icon",
+		() => "procress_bar",
+		() => "Layer 2",
+		() => "bg",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => ((f0("Layer 1") / f1("Layer 1")) * 1.6);
 		},
-		() => "up_icon",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => ((f0("Layer 1") / f1("Layer 1")) * 1.35);
 		},
-		() => "procress_bar",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => ((f0("procress_bar") / f1("procress_bar")) * 1.6);
 		},
-		() => "Layer 2",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => ((f0("Layer 0") / f1("Layer 0")) * 1.6);
 		},
-		() => "bg",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -4744,6 +4796,11 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("currency");
 		},
+		() => 20,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("drop");
+		},
 		() => 103,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -4758,18 +4815,12 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			return () => ((f0("Layer 2") - (n1.ExpObject() * 2)) - 5);
 		},
-		() => 0,
 		() => "control",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => and("Слова не по теме:", f0("words_notdo"));
-		},
 		() => "",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
 		},
-		() => 202,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => ((427 - (n0.ExpObject() / 2)) + 12);
@@ -4780,7 +4831,6 @@ self.C3_ExpressionFuncs = [
 			return () => n0.ExpObject(f1("lvl"));
 		},
 		() => "Layer 3",
-		() => 1,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -4862,7 +4912,6 @@ self.C3_ExpressionFuncs = [
 			return () => (n0.ExpInstVar() - 50);
 		},
 		() => "0",
-		() => 20,
 		() => 106,
 		() => 107,
 		() => 0.35,
@@ -4922,53 +4971,52 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => add(f0("count_wins"), 1);
 		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0("count_wins");
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => add(f0("flowers_state"), 1);
-		},
 		() => 427,
-		() => 255,
-		() => 320,
-		() => 375,
-		() => 425,
-		() => 210,
-		() => 236,
-		() => 234,
+		() => 220,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => subtract(f0("flowers_state"), 1);
+			return () => (f0("up_icon") * 2);
 		},
-		() => 0.3,
-		() => 330,
-		() => 195,
-		() => 60,
-		() => "Продолжить",
-		() => 25,
-		() => 270,
-		() => 80,
-		() => 300,
-		() => 230,
-		() => 45,
-		() => 350,
-		() => 400,
-		() => 450,
-		() => 500,
-		() => 550,
-		() => 266.611249,
-		() => 357.583126,
-		() => 155,
-		() => 85,
-		() => 432.180314,
-		() => 357.180314,
-		() => "Увеличить прогресс за рекламу",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => ((((and((("                            ПОБЕДА!" + "\n") + "Вы прошли этот уровень быстрее,чем "), f0(70, 75, 86, 75.5)) + "%") + " других игроков") + "\n") + "                     шкала прогресса");
-		},
+		() => 419.082257,
+		() => 246.109264,
+		() => 256.737507,
+		() => 328.369096,
+		() => 415.815396,
+		() => 108.514115,
+		() => 292.916146,
+		() => 133.832647,
+		() => 417.823604,
+		() => 189.700587,
+		() => 134.262536,
+		() => 42,
+		() => 0.45,
+		() => "Награда",
+		() => 417.598582,
+		() => 242.874191,
+		() => 176.366289,
+		() => 43.370664,
+		() => 299.300227,
+		() => 406.685203,
+		() => 238,
+		() => 74.489697,
+		() => 30.46171,
+		() => 0.4,
+		() => 150,
+		() => 406.361128,
+		() => 295,
+		() => 472,
+		() => 242.272432,
+		() => 35,
+		() => 471.515855,
+		() => 298.939808,
+		() => 24.204168,
+		() => 33.90516,
+		() => 363.904573,
+		() => 360.123045,
+		() => 103.887199,
+		() => 56.286147,
+		() => 471.117645,
+		() => 360.393598,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
@@ -5096,6 +5144,10 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => and("Слова не по теме:", f0("words_notdo"));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("words_notdo");
 		},
 		() => 0.5,
@@ -5114,34 +5166,28 @@ self.C3_ExpressionFuncs = [
 			const f3 = p._GetNode(3).GetBoundMethod();
 			return () => C3.toDegrees(C3.angleTo(v0.GetValue(), v1.GetValue(), f2("Layer 0"), f3("Layer 0")));
 		},
+		() => 210,
+		() => 330,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			const n1 = p._GetNode(1);
 			return () => (v0.GetValue() - n1.ExpObject());
 		},
 		() => 30,
-		() => 150,
 		() => 120,
 		() => 240,
 		() => -60,
+		() => 60,
 		() => "bust",
+		() => "bust 2",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(2, 4, 3, 1, 4, 2);
+			return () => f0("bust1_count");
 		},
-		() => 0.2,
+		() => "bust1_count",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0("bust2_count");
-		},
-		() => "bust2_count",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => subtract(f0("bust2_count"), 1);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(3, 4, 5, 6, 7);
+			return () => subtract(f0("bust1_count"), 1);
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -5179,6 +5225,26 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => ((v0.GetValue() + (50 * v1.GetValue())) - 50);
 		},
+		() => "other bust",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(2, 4, 3, 1, 4, 2);
+		},
+		() => 0.2,
+		() => "bust 1",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("bust2_count");
+		},
+		() => "bust2_count",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => subtract(f0("bust2_count"), 1);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(3, 4, 5, 6, 7);
+		},
 		() => 36,
 		() => "settings1",
 		p => {
@@ -5198,15 +5264,10 @@ self.C3_ExpressionFuncs = [
 		() => 11904453,
 		() => "вкл",
 		() => 16777215,
-		() => 220,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => (f0("up_icon") * 2);
-		},
+		() => 230,
 		() => 352,
 		() => 329,
 		() => 201,
-		() => 42,
 		() => "Настройки",
 		() => 0.55,
 		() => 341,
@@ -5218,6 +5279,7 @@ self.C3_ExpressionFuncs = [
 		() => 109.279169,
 		() => "Звуки",
 		() => 481,
+		() => 155,
 		() => 444,
 		() => 183,
 		() => 520,
@@ -5232,7 +5294,6 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => f0(f1("off_ad"));
 		},
-		() => 35,
 		() => 38,
 		() => 0.05,
 		() => "settings",
@@ -5256,24 +5317,11 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (f0((f1("settings")).toString(), 0, 1) + "1");
 		},
+		() => "other",
 		() => 480,
 		() => -175,
 		() => 570,
 		() => -255,
-		() => 260,
-		() => 275,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => add(300, multiply(subtract(f0("words_notdo"), 20), (300 / 20)));
-		},
-		() => 340,
-		() => 175,
-		() => "Вернуться",
-		() => 135,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => and(f0("words_notdo"), "/20");
-		},
 		() => 51,
 		() => 56,
 		() => 55,
@@ -5287,37 +5335,77 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => C3.lerp(n0.ExpObject(), 0.18, 0.4);
 		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0("bust1_count");
-		},
-		() => "bust1_count",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => subtract(f0("bust1_count"), 1);
-		},
-		() => 84,
 		() => "ShowSelectBlock",
+		() => 84,
+		() => 104,
+		() => 0.24,
+		() => 44,
+		() => 22,
+		() => 0.25,
 		() => "ad",
-		() => -330,
 		() => "lvl",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => add(f0("lvl"), 1);
 		},
+		() => "currency",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => add(f0("currency"), 150);
+		},
+		() => "drop",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => add(f0("drop"), 150);
+		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("lvl");
 		},
-		() => "currency",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => add(f0("currency"), 1);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (f0(f1("off_ad")) + 2629800000);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => add(250, multiply(50, f0("count_wins")));
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => f0(f1());
 		},
+		() => 425.5,
+		() => 116.5,
+		() => 294,
+		() => 73,
+		() => 0.37,
+		() => "Отключить рекламу на месяц",
+		() => 424.355412,
+		() => 224.016534,
+		() => 122.53721,
+		() => 144.214866,
+		() => 479.355412,
+		() => 223.016534,
+		() => 47.909081,
+		() => 49.925615,
+		() => 338,
+		() => 187.265221,
+		() => 62.327282,
+		() => 337,
+		() => 128,
+		() => 39,
+		() => "50 OK",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => add(f0("currency"), 300);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => add(f0("drop"), 300);
+		},
+		() => 395,
+		() => "off_ad",
+		() => 58,
+		() => 0.42,
+		() => 53,
 		() => "buy_bust",
 		() => 110,
 		() => 1041,
@@ -5332,20 +5420,104 @@ self.C3_ExpressionFuncs = [
 		() => "50",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => add(250, multiply(50, f0("count_wins")));
+		},
+		() => 255,
+		() => 320,
+		() => 375,
+		() => 270,
+		() => 80,
+		() => 300,
+		() => 45,
+		() => 350,
+		() => 400,
+		() => 450,
+		() => 500,
+		() => 550,
+		() => 266.611249,
+		() => 357.583126,
+		() => 85,
+		() => "Продолжить",
+		() => 432.180314,
+		() => 357.180314,
+		() => "Увеличить прогресс за рекламу",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => ((((and((("                            ПОБЕДА!" + "\n") + "Вы прошли этот уровень быстрее,чем "), f0(70, 75, 86, 75.5)) + "%") + " других игроков") + "\n") + "                     шкала прогресса");
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
 			return () => f0(n1.ExpObject(), 50);
 		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => and("garden", (f0(divide(f1("flowers"), 10)) * 10));
+		},
+		() => 4000,
 		() => 69,
+		() => 21,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => ((f0("Layer 1") / f1("Layer 1")) * 1.3);
+		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => ((f0("Layer 0") / f1("Layer 0")) / 1.05);
 		},
+		() => 340,
+		() => 510,
+		() => 305,
+		() => 435,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => ((f0("Layer 0") / f1("Layer 0")) / 0.6);
 		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (f0("up_icon") / 490);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (f0("up_icon") / 550);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 4);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 69);
+		},
+		() => 14,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpInstVar_Family();
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 34);
+		},
+		() => 16,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("flowers");
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 34);
+		},
+		() => "-600",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 20);
+		},
+		() => "6",
+		() => "-150",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("date1");
@@ -5355,29 +5527,53 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (f0(f1("date1")) + 86400000);
 		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => f0(f1());
-		},
 		() => "buy",
-		() => 395,
-		() => "off_ad",
 		() => "touch_button_menu",
 		() => "daily reward",
-		() => 274.246194,
-		() => 97.150965,
-		() => 310,
-		() => 190,
-		() => 34.805169,
-		() => 32.616747,
-		() => 390,
 		() => 430,
-		() => 470,
-		() => 510,
-		() => "Получить",
-		() => "background",
-		() => "green",
+		() => 343,
+		() => 290,
+		() => 97,
+		() => 170,
+		() => 429,
+		() => 271,
+		() => 286,
+		() => 105,
+		() => 354,
+		() => 149,
+		() => 200,
+		() => "Заходи каждый день в игру и получай награду!",
+		() => 0.22,
+		() => 323,
+		() => 243,
+		() => 381,
+		() => "10",
+		() => 440,
+		() => "15",
+		() => 504,
+		() => "20",
+		() => "25",
+		() => 411,
+		() => "30",
+		() => 501,
+		() => "35",
+		() => 344,
+		() => 250,
+		() => 406,
+		() => 248,
+		() => 464,
+		() => 246,
+		() => 23,
+		() => 531,
+		() => 27,
+		() => 355,
+		() => 296,
+		() => 31,
+		() => 33,
+		() => 446,
+		() => 540,
+		() => 291,
+		() => 46,
 		() => "date1",
 		() => "gift",
 		p => {
@@ -5386,16 +5582,144 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0("gift");
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => (f0(f1("currency")) + (5 * f2(f3("gift"))));
 		},
-		() => 457,
-		() => -214,
-		() => 59,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0("flowers");
+			return () => f0("gift");
+		},
+		() => 59,
+		() => "gardens",
+		() => "garden0",
+		() => "Default",
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			return () => (n0.ExpObject() - (n1.ExpObject() / 2));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 30);
+		},
+		() => 65,
+		() => 32,
+		() => 29.481894,
+		() => 42.680942,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => subtract(f0("flowers"), (f1(divide(f2("flowers"), 10)) * 10));
+		},
+		() => "flowerbad",
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => and(and("flowers", n0.ExpInstVar()), (f1(divide(f2("flowers"), 10)) * 10));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => and("-", multiply(150, f0("flowers_state")));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => multiply(1, f0("flowers_state"));
+		},
+		() => -2,
+		() => 108,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 16);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 44);
+		},
+		() => 355.7,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => add(subtract(f0("flowers"), (f1(divide(f2("flowers"), 10)) * 10)), 1);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => add(f0("flowers_state"), 1);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => f0(f1("flowers"));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			return () => f0(n1.ExpObject());
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			return () => add(f0("drop"), v1.GetValue());
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const v2 = p._GetNode(2).GetVar();
+			return () => (f0(f1("currency")) + v2.GetValue());
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const v2 = p._GetNode(2).GetVar();
+			return () => (f0(f1("drop")) + v2.GetValue());
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (f0(f1("flowers_state")) + 1);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 14);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => f0(f1("flowers_state"));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (f0(f1("flowers")) + 1);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("up_icon");
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (f0("up_icon") - 25);
+		},
+		() => 40,
+		() => 225,
+		() => "Недостаточно средств!",
+		() => 0.23,
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => and(and("flowers", n0.ExpInstVar_Family()), (f1(divide(f2("flowers"), 10)) * 10));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => subtract(f0("currency"), 150);
 		},
 		() => 403,
+		() => 135,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 10);
@@ -5409,7 +5733,6 @@ self.C3_ExpressionFuncs = [
 		() => 263,
 		() => 267,
 		() => 256,
-		() => 355,
 		() => 0.01,
 		() => 526,
 		() => 76,
@@ -5419,20 +5742,38 @@ self.C3_ExpressionFuncs = [
 		() => "settings_book",
 		() => 285,
 		() => 125,
-		() => 290,
 		() => 469,
 		() => 232,
 		() => 70,
 		() => 147,
 		() => 495,
-		() => 31,
 		() => 493,
-		() => 305,
+		() => 175,
 		() => "Убрать рекламу",
+		() => "Вернуться",
 		() => 489,
 		() => -145,
 		() => 494,
-		() => 441
+		() => 441,
+		() => 124,
+		() => "touchShop",
+		() => 54,
+		() => 0.335,
+		() => 106.61354,
+		() => 40.689447,
+		() => "buyCoin",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => and("coin", n0.ExpInstVar());
+		},
+		() => "coin1",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => add(f0("currency"), 1500);
+		},
+		() => "coin2",
+		() => "coin3",
+		() => "coin4"
 ];
 
 
