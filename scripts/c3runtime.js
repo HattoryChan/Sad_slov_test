@@ -4390,6 +4390,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.layerscale,
 		C3.Plugins.Spritefont2.Cnds.PickByUID,
 		C3.Plugins.Spritefont2.Acts.SetText,
+		C3.Plugins.Spritefont2.Acts.SetInstanceVar,
+		C3.Plugins.System.Exps.len,
 		C3.Plugins.Sprite.Acts.SetSize,
 		C3.Plugins.Sprite.Exps.Height,
 		C3.Plugins.Text.Acts.Destroy,
@@ -4438,7 +4440,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.Spritefont2.Acts.SetOpacity,
 		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.System.Exps.len,
 		C3.Plugins.System.Exps.mid,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Behaviors.Pin.Acts.PinByProperties,
@@ -4447,13 +4448,13 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSet,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSync,
 		C3.Plugins.Sprite.Cnds.PickInstVarHiLow,
+		C3.Plugins.Sprite.Acts.AddInstanceVar,
 		C3.Behaviors.Tween.Cnds.IsPlaying,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
 		C3.Plugins.System.Acts.Signal,
 		C3.Plugins.System.Exps.tokencount,
 		C3.Plugins.System.Exps.tokenat,
-		C3.Plugins.Spritefont2.Acts.SetInstanceVar,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.System.Cnds.While,
 		C3.Plugins.System.Cnds.PickNth,
@@ -4468,12 +4469,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Touch.Exps.X,
 		C3.Plugins.Touch.Exps.Y,
 		C3.Plugins.System.Cnds.IsBetweenAngles,
+		C3.Plugins.Arr.Cnds.CompareX,
 		C3.Behaviors.Tween.Cnds.IsAnyPlaying,
 		C3.Plugins.System.Exps.choose,
 		C3.Plugins.Spritefont2.Cnds.CompareOpacity,
 		C3.Plugins.System.Cnds.PickRandom,
 		C3.Plugins.Spritefont2.Acts.SetBoolInstanceVar,
-		C3.Plugins.Arr.Cnds.CompareX,
 		C3.Plugins.Spritefont2.Cnds.CompareText,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Touch.Cnds.IsTouchingObject,
@@ -4713,7 +4714,9 @@ self.C3_JsPropNameTable = [
 	{TextForShopDown: 0},
 	{TextForShopTop: 0},
 	{TextForStudy: 0},
+	{scale: 0},
 	{TextForUI: 0},
+	{dailyRewards: 0},
 	{themeWords: 0},
 	{TiledBackground3: 0},
 	{topic_words: 0},
@@ -4912,6 +4915,7 @@ function or(l, r)
 self.C3_ExpressionFuncs = [
 		() => 0,
 		() => 202,
+		() => 180,
 		() => 25,
 		() => "Layer 1",
 		() => 1,
@@ -4978,6 +4982,11 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("currency");
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => ((((f0(f1("currency"))) > (3) ? 1 : 0)) ? (0.25) : (0.23));
 		},
 		() => 20,
 		p => {
@@ -5410,6 +5419,11 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => subtract(f0("bust1_count"), 1);
 		},
+		() => "currency",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => subtract(f0("currency"), 50);
+		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			const v1 = p._GetNode(1).GetVar();
@@ -5430,8 +5444,7 @@ self.C3_ExpressionFuncs = [
 			const n2 = p._GetNode(2);
 			const f3 = p._GetNode(3).GetBoundMethod();
 			const v4 = p._GetNode(4).GetVar();
-			const v5 = p._GetNode(5).GetVar();
-			return () => f0(f1(n2.ExpObject(f3("lvl")), v4.GetValue(), " "), (v5.GetValue() + 2), 1);
+			return () => f0(f1(n2.ExpObject(f3("lvl")), v4.GetValue(), " "), 2, 1);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5439,7 +5452,7 @@ self.C3_ExpressionFuncs = [
 			const n2 = p._GetNode(2);
 			const f3 = p._GetNode(3).GetBoundMethod();
 			const v4 = p._GetNode(4).GetVar();
-			return () => f0(f1(n2.ExpObject(f3("lvl")), v4.GetValue(), " "), 2, 1);
+			return () => f0(f1(n2.ExpObject(f3("lvl")), v4.GetValue(), " "), 3, 1);
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -5556,12 +5569,27 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => C3.lerp(n0.ExpObject(), 0.18, 0.4);
 		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("up_icon");
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (f0("up_icon") - 5);
+		},
+		() => 344,
+		() => 40,
+		() => 225,
+		() => "Недостаточно средств!",
+		() => 0.23,
 		() => 84,
 		() => 104,
-		() => 0.24,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpInstVar() - 0.01);
+		},
 		() => 44,
 		() => 22,
-		() => 0.25,
 		() => 39,
 		() => "ad",
 		p => {
@@ -5569,6 +5597,8 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			return () => f0(n1.ExpObject());
 		},
+		() => 0.24,
+		() => 0.25,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
@@ -5590,7 +5620,6 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => add(f0("lvl"), 1);
 		},
-		() => "currency",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => add(f0("currency"), 150);
@@ -5691,7 +5720,6 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			return () => f0(n1.ExpObject(), 50);
 		},
-		() => 10000,
 		() => "game_screen",
 		() => 69,
 		() => 21,
@@ -5800,7 +5828,6 @@ self.C3_ExpressionFuncs = [
 		() => "30",
 		() => 501,
 		() => "35",
-		() => 344,
 		() => 250,
 		() => 406,
 		() => 248,
@@ -5997,15 +6024,9 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0("up_icon");
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (f0("up_icon") - 25);
 		},
-		() => 40,
 		() => "Вы прошли сад!",
-		() => 0.23,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -6015,8 +6036,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 2);
 		},
-		() => 225,
-		() => "Недостаточно средств!",
 		p => {
 			const n0 = p._GetNode(0);
 			const f1 = p._GetNode(1).GetBoundMethod();
