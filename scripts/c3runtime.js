@@ -5800,6 +5800,10 @@ self.C3_ExpressionFuncs = [
 			return () => (f0(f1("date1")) + 86400000);
 		},
 		() => "buy",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 1);
+		},
 		() => "touch_button_menu",
 		() => "daily reward",
 		() => 430,
