@@ -4448,23 +4448,21 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.AnimationFrameCount,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSet,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSync,
+		C3.Plugins.System.Exps.loopindex,
+		C3.Behaviors.Tween.Acts.TweenTwoProperties,
 		C3.Plugins.Sprite.Cnds.PickInstVarHiLow,
 		C3.Plugins.Sprite.Acts.AddInstanceVar,
 		C3.Behaviors.Tween.Cnds.IsPlaying,
 		C3.Plugins.System.Cnds.CompareVar,
-		C3.Behaviors.Tween.Acts.TweenTwoProperties,
-		C3.Plugins.System.Acts.Signal,
 		C3.Plugins.System.Exps.tokencount,
+		C3.Plugins.System.Acts.Signal,
 		C3.Plugins.System.Exps.tokenat,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.System.Cnds.While,
 		C3.Plugins.System.Cnds.PickNth,
-		C3.Plugins.System.Exps.loopindex,
 		C3.Plugins.Spritefont2.Cnds.CompareInstanceVar,
 		C3.Plugins.Spritefont2.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Spritefont2.Acts.SetDefaultColor,
-		C3.Plugins.System.Exps.find,
-		C3.Plugins.Button.Acts.SetText,
 		C3.Plugins.Touch.Cnds.OnTouchObject,
 		C3.Plugins.Touch.Cnds.IsInTouch,
 		C3.Plugins.Touch.Exps.X,
@@ -4506,6 +4504,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Mouse.Cnds.IsButtonDown,
 		C3.Plugins.Sprite.Cnds.OnCreated,
 		C3.Plugins.Button.Acts.SetSize,
+		C3.Plugins.Button.Acts.SetText,
 		C3.Plugins.Text.Acts.MoveToTop,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.System.Exps.max,
@@ -5137,6 +5136,10 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() - 100);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() + 200);
 		},
 		p => {
@@ -5200,6 +5203,29 @@ self.C3_ExpressionFuncs = [
 			return () => add(f0("words_notdo"), 1);
 		},
 		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("words_notdo");
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => subtract(f0("words_notdo"), 5);
+		},
+		() => "currency",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => add(f0("currency"), 5);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (0.1 * (f0() + 1));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 14);
+		},
+		() => 16,
+		() => 0.5,
+		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() + 1);
 		},
@@ -5245,11 +5271,19 @@ self.C3_ExpressionFuncs = [
 		() => 74.489697,
 		() => 30.46171,
 		() => 0.4,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => f0(n1.ExpObject(f2("lvl")), " ");
+		},
 		() => 406.361128,
 		() => 295,
 		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (v0.GetValue() * 2);
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => (f0(n1.ExpObject(f2("lvl")), " ") * 2);
 		},
 		() => 472,
 		() => 242.272432,
@@ -5266,12 +5300,6 @@ self.C3_ExpressionFuncs = [
 		() => 360.393598,
 		() => "win_1",
 		() => "tutorial_ended",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			const f2 = p._GetNode(2).GetBoundMethod();
-			return () => f0(n1.ExpObject(f2("lvl")), " ");
-		},
 		p => {
 			const n0 = p._GetNode(0);
 			return () => ((240 - (n0.ExpObject() / 2)) + 22);
@@ -5334,79 +5362,6 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			const v1 = p._GetNode(1).GetVar();
-			return () => (v0.GetValue() - (50 * v1.GetValue()));
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			return () => f0(n1.ExpObject(0), " ");
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const n2 = p._GetNode(2);
-			const v3 = p._GetNode(3).GetVar();
-			return () => f0(f1(n2.ExpObject(0), v3.GetValue(), " "), 0, 1);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const n2 = p._GetNode(2);
-			const v3 = p._GetNode(3).GetVar();
-			return () => f0(f1(n2.ExpObject(0), v3.GetValue(), " "), 1, 1);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const n2 = p._GetNode(2);
-			const v3 = p._GetNode(3).GetVar();
-			const v4 = p._GetNode(4).GetVar();
-			return () => f0(f1(n2.ExpObject(0), v3.GetValue(), " "), v4.GetValue(), 1);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const n2 = p._GetNode(2);
-			const v3 = p._GetNode(3).GetVar();
-			return () => f0(f1(n2.ExpObject(0), v3.GetValue(), " "));
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			const f2 = p._GetNode(2).GetBoundMethod();
-			const f3 = p._GetNode(3).GetBoundMethod();
-			const n4 = p._GetNode(4);
-			const v5 = p._GetNode(5).GetVar();
-			return () => f0(n1.ExpObject(f2("lvl")), ((" " + f3(n4.ExpObject(0), v5.GetValue(), " ")) + " "));
-		},
-		() => -1,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const v1 = p._GetNode(1).GetVar();
-			const f2 = p._GetNode(2).GetBoundMethod();
-			const n3 = p._GetNode(3);
-			const v4 = p._GetNode(4).GetVar();
-			return () => f0(v1.GetValue(), ((" " + f2(n3.ExpObject(0), v4.GetValue(), " ")) + " "));
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			const v2 = p._GetNode(2).GetVar();
-			return () => (f0(n1.ExpObject(0), v2.GetValue(), " ") + " ");
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => and("Слова не по теме:", f0("words_notdo"));
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0("words_notdo");
-		},
-		() => 0.5,
-		() => "words_nodo",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const v1 = p._GetNode(1).GetVar();
 			const f2 = p._GetNode(2).GetBoundMethod();
 			const f3 = p._GetNode(3).GetBoundMethod();
 			return () => C3.distanceTo(v0.GetValue(), v1.GetValue(), f2("Layer 0"), f3("Layer 0"));
@@ -5442,7 +5397,6 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => subtract(f0("bust1_count"), 1);
 		},
-		() => "currency",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => subtract(f0("currency"), 50);
@@ -5571,23 +5525,6 @@ self.C3_ExpressionFuncs = [
 		() => -175,
 		() => 570,
 		() => -255,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => subtract(f0("words_notdo"), 5);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => add(f0("currency"), 5);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => (0.1 * (f0() + 1));
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 14);
-		},
-		() => 16,
 		() => 51,
 		() => 56,
 		() => 55,
@@ -5653,14 +5590,18 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			const v1 = p._GetNode(1).GetVar();
-			return () => add(f0("currency"), v1.GetValue());
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const n2 = p._GetNode(2);
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => add(f0("currency"), f1(n2.ExpObject(f3("lvl")), " "));
 		},
 		() => "drop",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			const v1 = p._GetNode(1).GetVar();
-			return () => add(f0("drop"), (v1.GetValue() * 2));
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const n2 = p._GetNode(2);
+			const f3 = p._GetNode(3).GetBoundMethod();
+			return () => add(f0("drop"), (f1(n2.ExpObject(f3("lvl")), " ") * 2));
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -6021,6 +5962,7 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			return () => ((((f0(n1.ExpObject())) > (3) ? 1 : 0)) ? (0.15) : (0.25));
 		},
+		() => -1,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 34);
