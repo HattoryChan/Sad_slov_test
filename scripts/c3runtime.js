@@ -4509,6 +4509,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.System.Exps.max,
 		C3.Plugins.Mouse.Acts.SetCursor,
+		C3.Plugins.Touch.Cnds.OnTouchEnd,
+		C3.Plugins.Browser.Cnds.OnResize,
+		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.System.Acts.UnloadUnusedTextures,
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.System.Cnds.PickByComparison,
@@ -4522,7 +4525,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.Sprite.Cnds.OnDestroyed,
 		C3.Plugins.Eponesh_GameScore.Cnds.IsPlayerReady,
-		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.Date.Exps.ToTimerHours,
 		C3.Plugins.Date.Exps.Difference,
 		C3.Plugins.Date.Exps.ToTimerMinutes,
@@ -5231,11 +5233,6 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 1.5,
 		() => 1.7,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const n1 = p._GetNode(1);
-			return () => (v0.GetValue() + n1.ExpObject());
-		},
 		() => "5",
 		() => "count_wins",
 		p => {
@@ -5376,9 +5373,12 @@ self.C3_ExpressionFuncs = [
 		() => 210,
 		() => 330,
 		p => {
-			const v0 = p._GetNode(0).GetVar();
-			const n1 = p._GetNode(1);
-			return () => (v0.GetValue() - n1.ExpObject());
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 50);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 50);
 		},
 		() => 30,
 		() => 150,
@@ -5694,6 +5694,7 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			return () => f0(n1.ExpObject(), 50);
 		},
+		() => 0.3,
 		() => "game_screen",
 		() => 69,
 		() => 21,
