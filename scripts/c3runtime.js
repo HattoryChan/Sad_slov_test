@@ -4207,6 +4207,22 @@ OnMovement(){return true}}}{const C3=self.C3;const CURSOR_STYLES=["auto","pointe
 }
 
 {
+'use strict';{const C3=self.C3;C3.Plugins.PlatformInfo=class PlatformInfoPlugin extends C3.SDKPluginBase{constructor(opts){super(opts)}Release(){super.Release()}}}{const C3=self.C3;C3.Plugins.PlatformInfo.Type=class PlatformInfoType extends C3.SDKTypeBase{constructor(objectClass){super(objectClass)}Release(){super.Release()}OnCreate(){}}}
+{const C3=self.C3;const DOM_COMPONENT_ID="platform-info";C3.Plugins.PlatformInfo.Instance=class PlatformInfoInstance extends C3.SDKInstanceBase{constructor(inst,properties){super(inst,DOM_COMPONENT_ID);this._screenWidth=0;this._screenHeight=0;this._windowOuterWidth=0;this._windowOuterHeight=0;this._safeAreaInset=[0,0,0,0];this._supportsWakeLock=false;this._isWakeLockActive=false;this._isNwjs=false;this.AddDOMMessageHandlers([["window-resize",e=>this._OnWindowResize(e)],["wake-lock-acquired",e=>this._OnWakeLockAcquired(e)],
+["wake-lock-error",e=>this._OnWakeLockError(e)],["wake-lock-released",e=>this._OnWakeLockReleased(e)]]);if(navigator.connection)navigator.connection.addEventListener("change",()=>this._OnNetworkChange());this._runtime.AddLoadPromise(this.PostToDOMAsync("get-initial-state").then(data=>{this._screenWidth=data["screenWidth"];this._screenHeight=data["screenHeight"];this._windowOuterWidth=data["windowOuterWidth"];this._windowOuterHeight=data["windowOuterHeight"];this._safeAreaInset=data["safeAreaInset"];
+this._supportsWakeLock=data["supportsWakeLock"];this._isNwjs=data["isNwjs"]}))}Release(){super.Release()}_OnWindowResize(e){this._windowOuterWidth=e["windowOuterWidth"];this._windowOuterHeight=e["windowOuterHeight"];this._safeAreaInset=e["safeAreaInset"]}async _OnNetworkChange(){await this.TriggerAsync(C3.Plugins.PlatformInfo.Cnds.OnNetworkChange)}async _OnWakeLockAcquired(){this._isWakeLockActive=true;await this.TriggerAsync(C3.Plugins.PlatformInfo.Cnds.OnWakeLockAcquired)}async _OnWakeLockError(){this._isWakeLockActive=
+false;await this.TriggerAsync(C3.Plugins.PlatformInfo.Cnds.OnWakeLockError)}async _OnWakeLockReleased(){this._isWakeLockActive=false;await this.TriggerAsync(C3.Plugins.PlatformInfo.Cnds.OnWakeLockReleased)}}}
+{const C3=self.C3;C3.Plugins.PlatformInfo.Cnds={IsOnMobile(){return C3.Platform.IsMobile},IsOnWindows(){return C3.Platform.OS==="Windows"},IsOnMacOS(){return C3.Platform.OS==="macOS"},IsOnLinux(){return C3.Platform.OS==="Linux"},IsOnChromeOS(){return C3.Platform.OS==="Chrome OS"},IsOnAndroid(){return C3.Platform.OS==="Android"},IsOniOS(){return C3.Platform.OS==="iOS"},IsWebExport(){const exportType=this._runtime.GetExportType();return exportType==="html5"||exportType==="scirra-arcade"||exportType===
+"preview"||exportType==="instant-games"},IsCordovaExport(){return this._runtime.IsCordova()},IsNWjsExport(){return this._runtime.GetExportType()==="nwjs"||this._isNwjs},IsWindowsUWPExport(){return this._runtime.GetExportType()==="windows-uwp"},IsWindowsWebView2Export(){return this._runtime.GetExportType()==="windows-webview2"},IsMacOSWKWebView2Export(){return this._runtime.GetExportType()==="macos-wkwebview"},OnNetworkChange(){return true},OnWakeLockAcquired(){return true},OnWakeLockError(){return true},
+OnWakeLockReleased(){return true},IsWakeLockActive(){return this._isWakeLockActive},IsWakeLockSupported(){return this._supportsWakeLock}}}{const C3=self.C3;C3.Plugins.PlatformInfo.Acts={RequestWakeLock(){if(!this._supportsWakeLock)return;this._PostToDOMMaybeSync("request-wake-lock")},ReleaseWakeLock(){if(!this._supportsWakeLock)return;this._isWakeLockActive=false;this.PostToDOM("release-wake-lock")}}}
+{const C3=self.C3;C3.Plugins.PlatformInfo.Exps={Renderer(){let ret="";if(this._runtime.GetWebGPURenderer())ret="webgpu";else ret="webgl"+this._runtime.GetWebGLRenderer().GetWebGLVersionNumber();if(this._runtime.GetRenderer().HasMajorPerformanceCaveat())ret+="-software";return ret},RendererDetail(){return this._runtime.GetWebGLRenderer().GetUnmaskedRenderer()},DevicePixelRatio(){return self.devicePixelRatio},ScreenWidth(){return this._screenWidth},ScreenHeight(){return this._screenHeight},WindowInnerWidth(){return this._runtime.GetCanvasManager().GetLastWidth()},
+WindowInnerHeight(){return this._runtime.GetCanvasManager().GetLastHeight()},WindowOuterWidth(){return this._windowOuterWidth},WindowOuterHeight(){return this._windowOuterHeight},CanvasCssWidth(){return this._runtime.GetCanvasManager().GetCssWidth()},CanvasCssHeight(){return this._runtime.GetCanvasManager().GetCssHeight()},CanvasDeviceWidth(){return this._runtime.GetCanvasManager().GetDeviceWidth()},CanvasDeviceHeight(){return this._runtime.GetCanvasManager().GetDeviceHeight()},Downlink(){if(navigator.connection)return navigator.connection["downlink"]||
+0;else return 0},DownlinkMax(){if(navigator.connection)return navigator.connection["downlinkMax"]||0;else return 0},ConnectionType(){if(navigator.connection)return navigator.connection["type"]||"unknown";else return"unknown"},ConnectionEffectiveType(){if(navigator.connection)return navigator.connection["effectiveType"]||"unknown";else return"unknown"},ConnectionRTT(){if(navigator.connection)return navigator.connection["rtt"]||0;else return 0},HardwareConcurrency(){return navigator.hardwareConcurrency||
+0},DeviceMemory(){return navigator.deviceMemory||0},SafeAreaInsetTop(){return this._safeAreaInset[0]},SafeAreaInsetRight(){return this._safeAreaInset[1]},SafeAreaInsetBottom(){return this._safeAreaInset[2]},SafeAreaInsetLeft(){return this._safeAreaInset[3]}}};
+
+}
+
+{
 'use strict';{const C3=self.C3;C3.Behaviors.Tween=class TweenBehavior extends C3.SDKBehaviorBase{constructor(opts){super(opts)}Release(){super.Release()}}}{const C3=self.C3;C3.Behaviors.Tween.Type=class TweenType extends C3.SDKBehaviorTypeBase{constructor(behaviorType){super(behaviorType)}Release(){super.Release()}OnCreate(){}}}
 {const C3=self.C3;const NAMESPACE=C3.Behaviors.Tween;const ENABLED=0;NAMESPACE.Instance=class TweenInstance extends C3.SDKBehaviorInstanceBase{constructor(behInst,properties){super(behInst);this._allowMultiple=false;this._enabled=true;if(properties){this._allowMultiple=false;this._enabled=!!properties[ENABLED]}this._activeTweens=new Map;this._disabledTweens=[];this._waitingForReleaseTweens=new Map;this._finishingTween=null;this._activeTweensJson=null;this._disabledTweensJson=null;this._waitingForReleaseTweensJson=
 null;this._finishingTweenName="";if(this._enabled)this._StartTicking2();this._afterLoad=e=>this._OnAfterLoad(e);this.GetRuntime().Dispatcher().addEventListener("afterload",this._afterLoad)}Release(){this.GetRuntime().Dispatcher().removeEventListener("afterload",this._afterLoad);this._afterLoad=null;if(this._finishingTween){this.ReleaseAndCompleteTween(this._finishingTween);this._finishingTween=null}this.ReleaseAndCompleteTweens();this._tweens=null;this.ClearDisabledList();this._disabledTweens=null;
@@ -4373,9 +4389,14 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.LocalStorage,
 		C3.Plugins.Eponesh_GameScore,
 		C3.Plugins.Mouse,
+		C3.Plugins.PlatformInfo,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Spritefont2.Acts.Destroy,
 		C3.Plugins.System.Acts.SetVar,
+		C3.Plugins.Sprite.Acts.SetInstanceVar,
+		C3.Plugins.Sprite.Exps.Height,
+		C3.Plugins.Sprite.Exps.Width,
+		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.System.Acts.SetLayerScale,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Exps.int,
@@ -4384,6 +4405,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.TiledBg.Cnds.CompareInstanceVar,
 		C3.Plugins.TiledBg.Acts.Destroy,
+		C3.Plugins.System.Acts.UnloadUnusedTextures,
 		C3.Plugins.Browser.Cnds.IsPortraitLandscape,
 		C3.Plugins.System.Exps.viewportwidth,
 		C3.Plugins.System.Exps.viewportheight,
@@ -4393,14 +4415,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Spritefont2.Acts.SetInstanceVar,
 		C3.Plugins.System.Exps.len,
 		C3.Plugins.Sprite.Acts.SetSize,
-		C3.Plugins.Sprite.Exps.Height,
 		C3.Plugins.Text.Acts.Destroy,
 		C3.Plugins.System.Acts.SetGroupActive,
 		C3.Plugins.AJAX.Acts.RequestFile,
 		C3.Plugins.System.Acts.WaitForPreviousActions,
 		C3.Plugins.Arr.Acts.JSONLoad,
 		C3.Plugins.AJAX.Exps.LastData,
-		C3.Plugins.Sprite.Exps.Width,
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.Spritefont2.Acts.SetY,
@@ -4429,10 +4449,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.PickDistance,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
-		C3.Plugins.System.Cnds.Repeat,
-		C3.Plugins.Sprite.Exps.Count,
 		C3.Plugins.System.Cnds.ForEachOrdered,
-		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.System.Cnds.PickAll,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Behaviors.Tween.Cnds.OnTweensFinished,
@@ -4441,10 +4458,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSet,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
-		C3.Plugins.Sprite.Acts.SetOpacity,
-		C3.Plugins.Spritefont2.Acts.SetOpacity,
 		C3.Plugins.System.Exps.mid,
-		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.Arr.Acts.SetX,
 		C3.Plugins.Sprite.Exps.AnimationFrameCount,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSync,
@@ -4452,14 +4466,18 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Anchor.Acts.SetEnabled,
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
 		C3.Plugins.System.Exps.max,
+		C3.Plugins.System.Cnds.Repeat,
 		C3.Plugins.System.Exps.loopindex,
 		C3.Plugins.Sprite.Cnds.PickInstVarHiLow,
 		C3.Plugins.Sprite.Acts.AddInstanceVar,
 		C3.Behaviors.Tween.Cnds.IsPlaying,
+		C3.Plugins.Sprite.Exps.Count,
 		C3.Plugins.System.Cnds.CompareVar,
+		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.System.Exps.tokencount,
 		C3.Plugins.System.Acts.Signal,
 		C3.Plugins.System.Exps.tokenat,
+		C3.Plugins.Spritefont2.Acts.SetOpacity,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.System.Cnds.While,
 		C3.Plugins.System.Cnds.PickNth,
@@ -4488,6 +4506,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Button.Acts.Destroy,
 		C3.Plugins.Text.Acts.SetPos,
 		C3.Plugins.Spritefont2.Exps.CharacterScale,
+		C3.Plugins.PlatformInfo.Cnds.IsOnMobile,
+		C3.Plugins.Mouse.Cnds.IsOverObject,
 		C3.Plugins.System.Exps.viewportleft,
 		C3.Plugins.System.Exps.viewportright,
 		C3.Plugins.System.Acts.GoToLayout,
@@ -4503,22 +4523,17 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Cnds.OnPaymentsPurchase,
 		C3.Plugins.Eponesh_GameScore.Cnds.OnAdsRewardedReward,
 		C3.Plugins.Sprite.Acts.SetVisible,
-		C3.Plugins.Mouse.Cnds.IsOverObject,
 		C3.Plugins.Mouse.Cnds.IsButtonDown,
-		C3.Plugins.Sprite.Cnds.OnCreated,
-		C3.Plugins.Button.Acts.SetSize,
-		C3.Plugins.Button.Acts.SetText,
-		C3.Plugins.Text.Acts.MoveToTop,
-		C3.Plugins.Text.Acts.SetText,
-		C3.Plugins.Mouse.Acts.SetCursor,
 		C3.Plugins.Touch.Cnds.OnTouchEnd,
 		C3.Plugins.Browser.Cnds.OnResize,
 		C3.Plugins.System.Acts.RestartLayout,
-		C3.Plugins.System.Acts.UnloadUnusedTextures,
+		C3.Plugins.Mouse.Acts.SetCursor,
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.System.Cnds.PickByComparison,
+		C3.Plugins.Sprite.Cnds.OnFrameChanged,
 		C3.Plugins.Sprite.Cnds.IsAnimPlaying,
 		C3.Plugins.Sprite.Exps.ImagePointY,
+		C3.Plugins.Sprite.Cnds.OnCreated,
 		C3.Plugins.Spritefont2.Acts.MoveToTop,
 		C3.Plugins.Sprite.Acts.MoveToTop,
 		C3.Plugins.System.Acts.CreateObjectByName,
@@ -4539,6 +4554,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Cnds.OnLeaderboardFetch,
 		C3.Plugins.System.Cnds.For,
 		C3.Plugins.Text.Cnds.CompareInstanceVar,
+		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardPlayerFieldAt,
 		C3.Plugins.Text.Acts.SetFontSize,
 		C3.Plugins.Text.Exps.Text,
@@ -4578,6 +4594,8 @@ self.C3_JsPropNameTable = [
 	{flowers24: 0},
 	{flowers34: 0},
 	{flowers44: 0},
+	{selfWidth: 0},
+	{selfHeith: 0},
 	{touch: 0},
 	{Tween: 0},
 	{Pin: 0},
@@ -4776,6 +4794,7 @@ self.C3_JsPropNameTable = [
 	{Array: 0},
 	{Mouse: 0},
 	{Xtouch: 0},
+	{PlatformInfo: 0},
 	{button: 0},
 	{dailycoin: 0},
 	{flowerbad: 0},
@@ -4931,6 +4950,10 @@ self.C3_ExpressionFuncs = [
 		() => 202,
 		() => 180,
 		() => 25,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject();
+		},
 		() => "Layer 1",
 		() => 1,
 		() => "up_icon",
@@ -5065,10 +5088,6 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => n0.ExpObject();
-		},
-		p => {
-			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 13);
 		},
 		() => 0.1,
@@ -5149,6 +5168,10 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() - 200);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() + 200);
 		},
 		p => {
@@ -5156,11 +5179,8 @@ self.C3_ExpressionFuncs = [
 			return () => (n0.ExpInstVar() - 50);
 		},
 		() => "0",
+		() => 0.05,
 		() => "words_notdo",
-		() => 106,
-		() => 107,
-		() => 0.35,
-		() => 100,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
@@ -5270,6 +5290,7 @@ self.C3_ExpressionFuncs = [
 		() => 1.5,
 		() => 1.7,
 		() => "5",
+		() => 100,
 		() => "count_wins",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5504,6 +5525,7 @@ self.C3_ExpressionFuncs = [
 		() => 230,
 		() => 352,
 		() => 329,
+		() => 107,
 		() => 201,
 		() => "Настройки",
 		() => 0.55,
@@ -5532,7 +5554,6 @@ self.C3_ExpressionFuncs = [
 			return () => f0(f1("off_ad"));
 		},
 		() => 38,
-		() => 0.05,
 		() => "settings",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5559,17 +5580,23 @@ self.C3_ExpressionFuncs = [
 		() => -175,
 		() => 570,
 		() => -255,
-		() => 56,
 		() => 55,
+		() => 106,
 		() => 10,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => C3.lerp(n0.ExpObject(), 0.15, 0.4);
 		},
+		() => 56,
 		() => 12,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => C3.lerp(n0.ExpObject(), 0.18, 0.4);
+		},
+		() => 13,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => C3.lerp(n0.ExpObject(), 0.2, 0.4);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5577,7 +5604,7 @@ self.C3_ExpressionFuncs = [
 			const f2 = p._GetNode(2).GetBoundMethod();
 			const f3 = p._GetNode(3).GetBoundMethod();
 			const f4 = p._GetNode(4).GetBoundMethod();
-			return () => f0(f1(f2("Layer 1"), (f3("Layer 0") + 150)), (f4("Layer 0") - 150));
+			return () => f0(f1(f2("Layer 1"), (f3("Layer 1") + 217)), (f4("Layer 1") - 90));
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5593,6 +5620,10 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 44,
 		() => 22,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpInstVar() + 0.01);
+		},
 		() => 39,
 		() => "ad",
 		p => {
@@ -5664,7 +5695,7 @@ self.C3_ExpressionFuncs = [
 		() => 338,
 		() => 187.265221,
 		() => 62.327282,
-		() => 337,
+		() => 322,
 		() => 128,
 		() => "50 OK",
 		p => {
@@ -5696,39 +5727,9 @@ self.C3_ExpressionFuncs = [
 			return () => add(f0("bust2_count"), 5);
 		},
 		() => "50",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => add(250, multiply(50, f0("count_wins")));
-		},
-		() => 255,
-		() => 320,
-		() => 375,
-		() => 270,
-		() => 80,
-		() => 300,
 		() => 45,
-		() => 350,
-		() => 400,
-		() => 450,
-		() => 500,
-		() => 550,
-		() => 266.611249,
-		() => 357.583126,
-		() => 85,
-		() => "Продолжить",
-		() => 432.180314,
-		() => 357.180314,
-		() => "Увеличить прогресс за рекламу",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => ((((and((("                            ПОБЕДА!" + "\n") + "Вы прошли этот уровень быстрее,чем "), f0(70, 75, 86, 75.5)) + "%") + " других игроков") + "\n") + "                     шкала прогресса");
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			return () => f0(n1.ExpObject(), 50);
-		},
 		() => 0.3,
+		() => 0.35,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -5741,10 +5742,24 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("Layer 0");
 		},
-		() => 10000,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpInstVar_Family() + 2);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpInstVar_Family();
+		},
 		() => "game_screen",
 		() => 69,
 		() => 21,
+		() => 270,
+		() => "Coin",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => ((f0("Coin") / f1("Coin")) * 1.6);
+		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -5783,10 +5798,6 @@ self.C3_ExpressionFuncs = [
 			return () => (n0.ExpObject() - 69);
 		},
 		() => 14,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar_Family();
-		},
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 40);
@@ -5840,9 +5851,11 @@ self.C3_ExpressionFuncs = [
 		() => "touch_button_menu",
 		() => "daily reward",
 		() => 430,
+		() => 255,
 		() => 343,
 		() => 290,
 		() => 97,
+		() => 375,
 		() => 170,
 		() => 429,
 		() => 286,
@@ -5903,11 +5916,11 @@ self.C3_ExpressionFuncs = [
 		() => 59,
 		p => {
 			const n0 = p._GetNode(0);
-			return () => C3.lerp(n0.ExpObject(), 0.23, 1);
+			return () => C3.lerp(n0.ExpObject(), 0.25, 1);
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => C3.lerp(n0.ExpObject(), 0.25, 1);
+			return () => C3.lerp(n0.ExpObject(), 0.27, 1);
 		},
 		() => "gardens",
 		() => "Default",
@@ -6190,7 +6203,7 @@ self.C3_ExpressionFuncs = [
 			const f2 = p._GetNode(2).GetBoundMethod();
 			const f3 = p._GetNode(3).GetBoundMethod();
 			const f4 = p._GetNode(4).GetBoundMethod();
-			return () => f0(f1(f2("up_icon"), (f3("Layer 0") + 150)), (f4("up_icon") - 150));
+			return () => f0(f1(f2("up_icon"), (f3("Layer 0") + 110)), (f4("up_icon") - 110));
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -6254,6 +6267,7 @@ self.C3_ExpressionFuncs = [
 		() => 0.335,
 		() => 106.61354,
 		() => 40.689447,
+		() => 0.36,
 		() => "buyCoin",
 		p => {
 			const n0 = p._GetNode(0);
