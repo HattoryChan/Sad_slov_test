@@ -4454,6 +4454,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetY,
 		C3.Plugins.Sprite.Acts.SetX,
 		C3.Plugins.System.Exps.min,
+		C3.Behaviors.Anchor.Acts.SetEnabled,
 		C3.Plugins.Sprite.Cnds.PickByUID,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Behaviors.Tween.Acts.TweenOneProperty,
@@ -4477,7 +4478,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.AnimationFrameCount,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSync,
 		C3.Plugins.Spritefont2.Acts.SetDefaultColor,
-		C3.Behaviors.Anchor.Acts.SetEnabled,
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
 		C3.Plugins.System.Exps.max,
 		C3.Plugins.System.Cnds.Repeat,
@@ -4526,6 +4526,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.viewportright,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Acts.RestartLayout,
+		C3.Plugins.Sprite.Acts.SetAnim,
+		C3.Plugins.Sprite.Cnds.OnAnimFinished,
 		C3.Behaviors.Tween.Acts.TweenValue,
 		C3.Plugins.Spritefont2.Exps.Text,
 		C3.Behaviors.Tween.Exps.Value,
@@ -4561,8 +4563,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Cnds.IsPlayerReady,
 		C3.Plugins.Spritefont2.Acts.SetVisible,
 		C3.Plugins.Spritefont2.Acts.SetX,
-		C3.Plugins.Sprite.Cnds.OnAnimFinished,
-		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Behaviors.DragnDrop.Cnds.OnDrop,
 		C3.Behaviors.DragnDrop.Cnds.IsDragging,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerLoad,
@@ -5647,6 +5647,8 @@ self.C3_ExpressionFuncs = [
 			return () => (n0.ExpInstVar() + 0.01);
 		},
 		() => 39,
+		() => "Open",
+		() => "Default",
 		() => "ad",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -6002,7 +6004,6 @@ self.C3_ExpressionFuncs = [
 			return () => C3.lerp(n0.ExpObject(), 0.27, 1);
 		},
 		() => "gardens",
-		() => "Default",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 30);
@@ -6210,14 +6211,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 2);
 		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const f2 = p._GetNode(2).GetBoundMethod();
-			const f3 = p._GetNode(3).GetBoundMethod();
-			const f4 = p._GetNode(4).GetBoundMethod();
-			return () => f0(f1(f2("message"), (f3("message") + 40)), (f4("message") - 40));
-		},
 		() => 338.706342,
 		() => 177.059879,
 		() => 63.268405,
@@ -6258,14 +6251,6 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => subtract(f0("currency"), 150);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const f2 = p._GetNode(2).GetBoundMethod();
-			const f3 = p._GetNode(3).GetBoundMethod();
-			const f4 = p._GetNode(4).GetBoundMethod();
-			return () => f0(f1(f2("up_icon"), (f3("Layer 0") + 110)), (f4("up_icon") - 110));
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
