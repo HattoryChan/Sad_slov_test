@@ -4480,6 +4480,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Spritefont2.Acts.SetDefaultColor,
 		C3.Behaviors.Tween.Acts.TweenTwoProperties,
 		C3.Plugins.System.Exps.max,
+		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.System.Cnds.Repeat,
 		C3.Plugins.System.Exps.loopindex,
 		C3.Behaviors.Tween.Cnds.IsPlaying,
@@ -4526,7 +4527,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.viewportright,
 		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.System.Acts.RestartLayout,
-		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.Sprite.Cnds.OnAnimFinished,
 		C3.Behaviors.Tween.Acts.TweenValue,
 		C3.Plugins.Spritefont2.Exps.Text,
@@ -4785,6 +4785,7 @@ self.C3_JsPropNameTable = [
 	{ЗаднееТаблоДерево: 0},
 	{drop2: 0},
 	{coin5: 0},
+	{words_not_do2: 0},
 	{avatar: 0},
 	{avatar2: 0},
 	{avatar3: 0},
@@ -5275,6 +5276,7 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => add(f0("currency"), 5);
 		},
+		() => "Open",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (0.1 * (f0() + 1));
@@ -5576,6 +5578,7 @@ self.C3_ExpressionFuncs = [
 			return () => f0(f1("off_ad"));
 		},
 		() => 38,
+		() => "Комбо 5",
 		() => "settings",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5597,6 +5600,15 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (f0((f1("settings")).toString(), 0, 1) + "1");
 		},
+		() => 325,
+		() => 280,
+		() => 98,
+		() => "Открой сундук дав 5 правильных ответов подряд.",
+		() => 0.35,
+		() => 425,
+		() => 211,
+		() => 179,
+		() => 165,
 		() => "other",
 		() => 480,
 		() => -175,
@@ -5647,7 +5659,6 @@ self.C3_ExpressionFuncs = [
 			return () => (n0.ExpInstVar() + 0.01);
 		},
 		() => 39,
-		() => "Open",
 		() => "Default",
 		() => "ad",
 		p => {
@@ -5748,7 +5759,6 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "50",
 		() => 45,
-		() => 0.35,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
