@@ -4820,6 +4820,7 @@ self.C3_JsPropNameTable = [
 	{PlatformInfo: 0},
 	{btnRestart: 0},
 	{funnel: 0},
+	{FlourForWords: 0},
 	{button: 0},
 	{dailycoin: 0},
 	{flowerbad: 0},
@@ -5175,11 +5176,9 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpInstVar() - 50);
 		},
-		() => 9,
 		p => {
 			const n0 = p._GetNode(0);
-			const n1 = p._GetNode(1);
-			return () => ((n0.ExpObject() - n1.ExpObject()) - 3);
+			return () => (n0.ExpObject() - 25);
 		},
 		() => "0",
 		() => 0.05,
@@ -5219,6 +5218,7 @@ self.C3_ExpressionFuncs = [
 		() => 6,
 		() => 7,
 		() => 8,
+		() => 9,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("flowers_state");
@@ -5242,10 +5242,6 @@ self.C3_ExpressionFuncs = [
 		() => 16777215,
 		() => "+1",
 		() => 0.23,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 25);
-		},
 		() => 0.4,
 		() => 51,
 		p => {
@@ -5780,7 +5776,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpInstVar_Family() + 2);
 		},
-		() => 100000,
 		() => "game_screen",
 		() => 69,
 		() => 21,
