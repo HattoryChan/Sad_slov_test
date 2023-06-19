@@ -4569,10 +4569,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Mouse.Cnds.IsButtonDown,
 		C3.Plugins.Browser.Cnds.OnResize,
 		C3.Plugins.Mouse.Acts.SetCursor,
-		C3.Plugins.AJAX.Acts.Post,
-		C3.Plugins.Eponesh_GameScore.Exps.PlayerName,
-		C3.Plugins.System.Exps.urlencode,
-		C3.Plugins.Eponesh_GameScore.Exps.PlayerAvatar,
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.System.Cnds.PickByComparison,
 		C3.Plugins.Browser.Acts.ConsoleLog,
@@ -4608,6 +4604,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Text.Exps.Text,
 		C3.Plugins.Sprite.Acts.LoadURL,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerIndex,
+		C3.Plugins.Eponesh_GameScore.Exps.PlayerName,
+		C3.Plugins.Eponesh_GameScore.Exps.PlayerAvatar,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerPosition,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetch,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetchPlayerRatingScoped,
@@ -5819,16 +5817,6 @@ self.C3_ExpressionFuncs = [
 			return () => (n0.ExpInstVar_Family() + 2);
 		},
 		() => "game_screen",
-		() => "meta",
-		() => "https://www.tablequiz.ru/codeForDD.php",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const f2 = p._GetNode(2).GetBoundMethod();
-			const f3 = p._GetNode(3).GetBoundMethod();
-			return () => ((and((("name=" + f0()) + "&score="), f1("currency")) + "&avatar=") + f2(f3()));
-		},
-		() => "POST",
 		() => 69,
 		() => 21,
 		() => 270,
@@ -5969,6 +5957,7 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (f0(f1("date1")) + 86400000);
 		},
+		() => "meta",
 		() => 124,
 		() => 79,
 		() => "buy",
