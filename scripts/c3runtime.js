@@ -4902,6 +4902,7 @@ self.C3_JsPropNameTable = [
 	{x: 0},
 	{y: 0},
 	{y2: 0},
+	{first: 0},
 	{button_play_firs_time: 0},
 	{ScaleIndex: 0},
 	{modeRating: 0},
