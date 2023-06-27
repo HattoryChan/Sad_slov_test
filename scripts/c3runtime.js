@@ -4419,6 +4419,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Button,
 		C3.Plugins.Text,
 		C3.Plugins.Spritefont2,
+		C3.Behaviors.Sin,
 		C3.Plugins.AJAX,
 		C3.Plugins.Browser,
 		C3.Plugins.Arr,
@@ -4428,7 +4429,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore,
 		C3.Plugins.Mouse,
 		C3.Plugins.PlatformInfo,
-		C3.Behaviors.Sin,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Spritefont2.Acts.Destroy,
 		C3.Plugins.System.Acts.SetVar,
@@ -4795,6 +4795,7 @@ self.C3_JsPropNameTable = [
 	{TextForSettings2: 0},
 	{TextForShopDown: 0},
 	{TextForShopTop: 0},
+	{Sine: 0},
 	{TextForStudy: 0},
 	{scale: 0},
 	{TextForUI: 0},
@@ -4857,7 +4858,6 @@ self.C3_JsPropNameTable = [
 	{PlatformInfo: 0},
 	{свечение: 0},
 	{FlowersNum: 0},
-	{Sine: 0},
 	{Sine2: 0},
 	{button: 0},
 	{dailycoin: 0},
@@ -4911,6 +4911,7 @@ self.C3_JsPropNameTable = [
 	{curPosOrigarh: 0},
 	{curPosGarden: 0},
 	{ScaleIndex: 0},
+	{AnyBuy: 0},
 	{modeRating: 0},
 	{gamezone: 0}
 ];
@@ -6414,6 +6415,16 @@ self.C3_ExpressionFuncs = [
 			return () => (f0("Layer 0") * 2);
 		},
 		() => "touchShop",
+		() => "shop",
+		() => "https://www.tablequiz.ru/dd_script_2.php",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const v1 = p._GetNode(1).GetVar();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			const f4 = p._GetNode(4).GetBoundMethod();
+			return () => ((and((and("id=", f0()) + "&purchase="), v1.GetValue()) + "&date=") + f2(f3(f4())));
+		},
 		() => 0.335,
 		() => 106.61354,
 		() => 40.689447,
