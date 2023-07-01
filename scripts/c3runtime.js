@@ -4588,12 +4588,16 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.ImagePointY,
 		C3.Plugins.Spritefont2.Acts.MoveToTop,
 		C3.Plugins.Sprite.Acts.MoveToTop,
+		C3.Plugins.Spritefont2.Acts.SetVisible,
+		C3.Plugins.Date.Exps.ToTimerHours,
+		C3.Plugins.Date.Exps.Difference,
+		C3.Plugins.Date.Exps.ToTimerMinutes,
+		C3.Plugins.Date.Exps.ToTimerSeconds,
 		C3.Plugins.System.Acts.CreateObjectByName,
 		C3.Plugins.Spritefont2.Acts.SetAngle,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.Sprite.Cnds.OnDestroyed,
 		C3.Plugins.Eponesh_GameScore.Cnds.IsPlayerReady,
-		C3.Plugins.Spritefont2.Acts.SetVisible,
 		C3.Plugins.Spritefont2.Acts.SetX,
 		C3.Plugins.Sprite.Acts.MoveToBottom,
 		C3.Behaviors.DragnDrop.Cnds.OnDrop,
@@ -4821,6 +4825,7 @@ self.C3_JsPropNameTable = [
 	{drop2: 0},
 	{coin5: 0},
 	{words_not_do2: 0},
+	{TextForUI2: 0},
 	{avatar: 0},
 	{avatar2: 0},
 	{avatar3: 0},
@@ -4841,6 +4846,10 @@ self.C3_JsPropNameTable = [
 	{FlourForWords: 0},
 	{funnel: 0},
 	{Xtouch: 0},
+	{buttonRating: 0},
+	{FlowersNum: 0},
+	{Sine2: 0},
+	{свечение: 0},
 	{AJAX: 0},
 	{Browser: 0},
 	{check_words: 0},
@@ -4856,9 +4865,6 @@ self.C3_JsPropNameTable = [
 	{Array: 0},
 	{Mouse: 0},
 	{PlatformInfo: 0},
-	{свечение: 0},
-	{FlowersNum: 0},
-	{Sine2: 0},
 	{button: 0},
 	{dailycoin: 0},
 	{flowerbad: 0},
@@ -4866,6 +4872,7 @@ self.C3_JsPropNameTable = [
 	{avatars: 0},
 	{GardensTile: 0},
 	{gardensBG: 0},
+	{procressBar: 0},
 	{get_money: 0},
 	{blockX: 0},
 	{blockY: 0},
@@ -5227,6 +5234,10 @@ self.C3_ExpressionFuncs = [
 		() => "words_notdo",
 		() => 3,
 		p => {
+			const n0 = p._GetNode(0);
+			return () => ((n0.ExpInstVar()) ? (5) : (0));
+		},
+		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
 			return () => f0(v1.GetValue());
@@ -5330,7 +5341,7 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 1.5,
 		() => "11",
-		() => 1.7,
+		() => 1.6,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() - 50);
@@ -5382,12 +5393,6 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 406.361128,
 		() => 295,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			const f2 = p._GetNode(2).GetBoundMethod();
-			return () => (f0(n1.ExpObject(f2("lvl")), " ") * 2);
-		},
 		() => 472,
 		() => 242.272432,
 		() => 35,
@@ -5648,7 +5653,7 @@ self.C3_ExpressionFuncs = [
 		() => 325,
 		() => 280,
 		() => 98,
-		() => "Открой сундук дав 5 правильных ответов подряд.",
+		() => "Открой сундук, дав 5 правильных ответов подряд.",
 		() => 0.35,
 		() => 425,
 		() => 211,
@@ -5824,6 +5829,8 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpInstVar_Family() + 2);
 		},
+		() => 10000,
+		() => 26,
 		() => "game_screen",
 		() => "global@spend_drops",
 		() => "default",
@@ -5849,6 +5856,7 @@ self.C3_ExpressionFuncs = [
 		() => 21,
 		() => 270,
 		() => "Coin",
+		() => "message",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -5876,6 +5884,10 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => ((f0("Layer 1") / f1("Layer 1")) * 1.27);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0("flowers");
 		},
 		() => 340,
 		() => 510,
@@ -6133,6 +6145,41 @@ self.C3_ExpressionFuncs = [
 		() => 44.741935,
 		() => 82.01005,
 		() => 56.747664,
+		() => "procressBar",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			return () => f0(and("flowercoin", n1.ExpInstVar_Family()));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			const n4 = p._GetNode(4);
+			return () => add((n0.ExpObject() - 55), add(55, multiply(subtract(subtract(f1(f2()), subtract(f3(and("flowercoin", n4.ExpInstVar_Family())), 10800000)), 10800000), (55 / 10800000))));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const f3 = p._GetNode(3).GetBoundMethod();
+			const f4 = p._GetNode(4).GetBoundMethod();
+			const n5 = p._GetNode(5);
+			const f6 = p._GetNode(6).GetBoundMethod();
+			const f7 = p._GetNode(7).GetBoundMethod();
+			const f8 = p._GetNode(8).GetBoundMethod();
+			const f9 = p._GetNode(9).GetBoundMethod();
+			const f10 = p._GetNode(10).GetBoundMethod();
+			const n11 = p._GetNode(11);
+			const f12 = p._GetNode(12).GetBoundMethod();
+			const f13 = p._GetNode(13).GetBoundMethod();
+			const f14 = p._GetNode(14).GetBoundMethod();
+			const f15 = p._GetNode(15).GetBoundMethod();
+			const f16 = p._GetNode(16).GetBoundMethod();
+			const n17 = p._GetNode(17);
+			return () => and((and(and(f0(f1(f2(f3()), f4(and("flowercoin", n5.ExpInstVar_Family())))), ":"), f6(f7(f8(f9()), f10(and("flowercoin", n11.ExpInstVar_Family()))))) + ":"), f12(f13(f14(f15()), f16(and("flowercoin", n17.ExpInstVar_Family())))));
+		},
 		() => "flowerbad",
 		p => {
 			const n0 = p._GetNode(0);
@@ -6303,11 +6350,6 @@ self.C3_ExpressionFuncs = [
 			return () => and(and("flowers", n0.ExpInstVar_Family()), f1(divide(f2("flowers"), 5)));
 		},
 		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			return () => f0(and("flowercoin", n1.ExpInstVar_Family()));
-		},
-		p => {
 			const n0 = p._GetNode(0);
 			return () => and("flowercoin", n0.ExpInstVar_Family());
 		},
@@ -6337,6 +6379,13 @@ self.C3_ExpressionFuncs = [
 			const f2 = p._GetNode(2).GetBoundMethod();
 			const n3 = p._GetNode(3);
 			return () => ((n0.ExpObject() - 30) - (4.4 * f1((f2(n3.ExpObject()) - 3), 0)));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			const n3 = p._GetNode(3);
+			return () => ((n0.ExpObject() - 20) - (4.4 * f1((f2(n3.ExpObject()) - 3), 0)));
 		},
 		p => {
 			const n0 = p._GetNode(0);
