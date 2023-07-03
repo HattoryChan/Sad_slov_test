@@ -5829,8 +5829,6 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpInstVar_Family() + 2);
 		},
-		() => 10000,
-		() => 26,
 		() => "game_screen",
 		() => "global@spend_drops",
 		() => "default",
