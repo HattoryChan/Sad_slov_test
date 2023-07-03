@@ -5185,7 +5185,7 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "у",
 		() => "з",
-		() => 2,
+		() => 5,
 		() => "tutorial_1",
 		p => {
 			const n0 = p._GetNode(0);
@@ -5266,8 +5266,8 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => (n0.ExpObject() + (25 * (10 - ((v1.GetValue() - 202) / 50))));
 		},
+		() => 2,
 		() => 4,
-		() => 5,
 		() => 6,
 		() => 7,
 		() => 8,
