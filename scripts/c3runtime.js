@@ -4540,6 +4540,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Touch.Cnds.OnTapGesture,
 		C3.Plugins.Sprite.Cnds.IsOnScreen,
 		C3.Plugins.System.Cnds.PickLastCreated,
+		C3.Plugins.Sprite.Cnds.OnDestroyed,
+		C3.Plugins.Date.Exps.Parse,
+		C3.Plugins.Eponesh_GameScore.Exps.ServerTime,
+		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
 		C3.Plugins.Sprite.Cnds.CompareOpacity,
 		C3.Plugins.Button.Cnds.OnClicked,
 		C3.Plugins.Button.Cnds.IsBoolInstanceVarSet,
@@ -4557,9 +4561,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Spritefont2.Exps.Text,
 		C3.Behaviors.Tween.Exps.Value,
 		C3.Plugins.Arr.Exps.Width,
-		C3.Plugins.Date.Exps.Parse,
-		C3.Plugins.Eponesh_GameScore.Exps.ServerTime,
-		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
 		C3.Plugins.Eponesh_GameScore.Acts.AdsShowRewarded,
 		C3.Plugins.Eponesh_GameScore.Acts.PaymentsPurchase,
 		C3.Plugins.Eponesh_GameScore.Cnds.OnPaymentsPurchase,
@@ -4595,7 +4596,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Acts.CreateObjectByName,
 		C3.Plugins.Spritefont2.Acts.SetAngle,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
-		C3.Plugins.Sprite.Cnds.OnDestroyed,
 		C3.Plugins.Eponesh_GameScore.Cnds.IsPlayerReady,
 		C3.Plugins.Spritefont2.Acts.SetX,
 		C3.Plugins.Sprite.Acts.MoveToBottom,
@@ -5631,6 +5631,16 @@ self.C3_ExpressionFuncs = [
 		},
 		() => 38,
 		() => "Комбо 5",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (f0(f1("off_ad")) + 2629800000);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => f0(f1());
+		},
 		() => "settings",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5757,16 +5767,6 @@ self.C3_ExpressionFuncs = [
 			return () => add(f0("drop"), (f1(n2.ExpObject(f3("lvl")), " ") * (2 * ((n4.ExpInstVar()) ? (2) : (1)))));
 		},
 		() => 0.3,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => (f0(f1("off_ad")) + 2629800000);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => f0(f1());
-		},
 		() => 425.5,
 		() => 116.5,
 		() => 294,
