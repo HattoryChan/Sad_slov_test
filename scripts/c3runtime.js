@@ -5516,7 +5516,7 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => subtract(f0("currency"), 50);
+			return () => subtract(f0("currency"), 100);
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -5785,8 +5785,8 @@ self.C3_ExpressionFuncs = [
 		() => 187.265221,
 		() => 62.327282,
 		() => 322,
-		() => 128,
-		() => "50 OK",
+		() => 175,
+		() => "99 OK",
 		() => 395,
 		() => "off_ad",
 		() => 58,
@@ -5808,7 +5808,7 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => add(f0("bust2_count"), 5);
 		},
-		() => "50",
+		() => "100",
 		() => 45,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -6486,11 +6486,23 @@ self.C3_ExpressionFuncs = [
 		() => "coin1",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => add(f0("currency"), 1500);
+			return () => add(f0("currency"), 400);
 		},
 		() => "coin2",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => add(f0("currency"), 1200);
+		},
 		() => "coin3",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => add(f0("currency"), 3000);
+		},
 		() => "coin4",
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => add(f0("currency"), 8000);
+		},
 		() => "settings2",
 		() => and("garden", 1),
 		() => and("garden", 2),
