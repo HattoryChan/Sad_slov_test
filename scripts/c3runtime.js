@@ -5799,7 +5799,6 @@ self.C3_ExpressionFuncs = [
 		() => 53,
 		() => "buy_bust",
 		() => 110,
-		() => 1041,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => add(f0("bust1_count"), 5);
