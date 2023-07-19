@@ -5321,6 +5321,17 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 25);
 		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (f0("Layer 0") / f1("Layer 0"));
+		},
+		() => 2.3,
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (n0.ExpObject() - (25 * (f1("Layer 0") / 0.68)));
+		},
 		() => "0",
 		() => 0.05,
 		() => "words_notdo",
@@ -5357,6 +5368,12 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			const v1 = p._GetNode(1).GetVar();
 			return () => (n0.ExpObject() + (25 * (10 - ((v1.GetValue() - 202) / 50))));
+		},
+		() => 1.75,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (1 - (((f0("Layer 0") / f1("Layer 0")) / 1.9) - 1));
 		},
 		() => 2,
 		() => 4,
@@ -5835,6 +5852,8 @@ self.C3_ExpressionFuncs = [
 			return () => (0.1 * f0());
 		},
 		() => 0.7,
+		() => 1.2,
+		() => 0.3,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
@@ -5851,7 +5870,6 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => add(f0("lvl"), 1);
 		},
-		() => 0.3,
 		() => 425.5,
 		() => 116.5,
 		() => 294,
@@ -5981,11 +5999,6 @@ self.C3_ExpressionFuncs = [
 		() => 510,
 		() => 305,
 		() => 435,
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => (f0("Layer 0") / f1("Layer 0"));
-		},
 		() => 0.7063829787234042,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
