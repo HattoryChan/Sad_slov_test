@@ -4513,8 +4513,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Eponesh_GameScore.Exps.PlayerGet,
-		C3.Plugins.Eponesh_GameScore.Acts.PlayerSet,
-		C3.Plugins.System.Acts.AddVar,
+		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.SetLayerScale,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Exps.int,
@@ -4571,11 +4570,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.ForEachOrdered,
 		C3.Plugins.System.Cnds.PickAll,
 		C3.Plugins.Sprite.Cnds.PickInstVarHiLow,
-		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Cnds.CompareBoolVar,
 		C3.Behaviors.Tween.Cnds.OnTweensFinished,
 		C3.Plugins.System.Acts.WaitForSignal,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
+		C3.Plugins.System.Acts.AddVar,
+		C3.Plugins.Eponesh_GameScore.Acts.PlayerSet,
 		C3.Plugins.System.Exps.mid,
 		C3.Plugins.Arr.Acts.SetX,
 		C3.Plugins.Sprite.Exps.AnimationFrameCount,
@@ -4649,7 +4649,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Mouse.Cnds.IsButtonDown,
 		C3.Plugins.Browser.Cnds.OnResize,
 		C3.Plugins.Mouse.Acts.SetCursor,
-		C3.Plugins.System.Cnds.OnLayoutEnd,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetchPlayerRatingScoped,
 		C3.Plugins.Eponesh_GameScore.Exps.LeaderboardCurPlayerPosition,
 		C3.Plugins.AJAX.Acts.Post,
@@ -5122,12 +5121,10 @@ self.C3_ExpressionFuncs = [
 			return () => f0("lvl");
 		},
 		() => 167,
-		() => "lvl",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => subtract(f0("lvl"), 100);
+			return () => subtract(f0("lvl"), 166);
 		},
-		() => 100,
 		() => "Layer 1",
 		() => 1,
 		() => "up_icon",
@@ -5241,8 +5238,8 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			const f1 = p._GetNode(1).GetBoundMethod();
-			return () => n0.ExpObject(f1("lvl"));
+			const v1 = p._GetNode(1).GetVar();
+			return () => n0.ExpObject(v1.GetValue());
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5476,6 +5473,7 @@ self.C3_ExpressionFuncs = [
 			return () => (v0.GetValue() + 50);
 		},
 		() => "5",
+		() => 100,
 		() => "count_wins",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5512,8 +5510,8 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
-			const f2 = p._GetNode(2).GetBoundMethod();
-			return () => f0(n1.ExpObject(f2("lvl")), " ");
+			const v2 = p._GetNode(2).GetVar();
+			return () => f0(n1.ExpObject(v2.GetValue()), " ");
 		},
 		() => 406.361128,
 		() => 295,
@@ -5540,46 +5538,41 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			const n2 = p._GetNode(2);
-			const f3 = p._GetNode(3).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
 			const v4 = p._GetNode(4).GetVar();
 			const v5 = p._GetNode(5).GetVar();
-			return () => f0(f1(n2.ExpObject(f3("lvl")), v4.GetValue(), " "), v5.GetValue(), 1);
+			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), v5.GetValue(), 1);
 		},
 		() => 15,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			const n2 = p._GetNode(2);
-			const f3 = p._GetNode(3).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
 			const v4 = p._GetNode(4).GetVar();
-			return () => f0(f1(n2.ExpObject(f3("lvl")), v4.GetValue(), " "));
+			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "));
 		},
 		() => "word_checking_mechanics",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			const n2 = p._GetNode(2);
-			const f3 = p._GetNode(3).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
 			const v4 = p._GetNode(4).GetVar();
-			return () => f0(f1(n2.ExpObject(f3("lvl")), v4.GetValue(), " "), 0, 1);
+			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), 0, 1);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			const n2 = p._GetNode(2);
-			const f3 = p._GetNode(3).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
 			const v4 = p._GetNode(4).GetVar();
-			return () => f0(f1(n2.ExpObject(f3("lvl")), v4.GetValue(), " "), 1, 1);
+			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), 1, 1);
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			const v1 = p._GetNode(1).GetVar();
 			return () => (v0.GetValue() + (50 * v1.GetValue()));
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			const v1 = p._GetNode(1).GetVar();
-			return () => n0.ExpObject(v1.GetValue());
 		},
 		() => -717706215031807,
 		() => -10991751167,
@@ -5591,9 +5584,9 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			const n2 = p._GetNode(2);
-			const f3 = p._GetNode(3).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
 			const v4 = p._GetNode(4).GetVar();
-			return () => f0(f1(n2.ExpObject(f3("lvl")), v4.GetValue(), " "), 2, 1);
+			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), 2, 1);
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -5657,18 +5650,18 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			const n2 = p._GetNode(2);
-			const f3 = p._GetNode(3).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
 			const v4 = p._GetNode(4).GetVar();
 			const v5 = p._GetNode(5).GetVar();
-			return () => f0(f1(n2.ExpObject(f3("lvl")), v4.GetValue(), " "), (v5.GetValue() + 1), 1);
+			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), (v5.GetValue() + 1), 1);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			const n2 = p._GetNode(2);
-			const f3 = p._GetNode(3).GetBoundMethod();
+			const v3 = p._GetNode(3).GetVar();
 			const v4 = p._GetNode(4).GetVar();
-			return () => f0(f1(n2.ExpObject(f3("lvl")), v4.GetValue(), " "), 3, 1);
+			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), 3, 1);
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -5880,10 +5873,10 @@ self.C3_ExpressionFuncs = [
 			const v1 = p._GetNode(1).GetVar();
 			return () => add(f0("drop"), v1.GetValue());
 		},
+		() => "lvl",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			const v1 = p._GetNode(1).GetVar();
-			return () => add(add(f0("lvl"), 1), v1.GetValue());
+			return () => add(f0("lvl"), 1);
 		},
 		() => 425.5,
 		() => 116.5,
@@ -5971,11 +5964,6 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpInstVar_Family() + 2);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const v1 = p._GetNode(1).GetVar();
-			return () => add(f0("lvl"), v1.GetValue());
 		},
 		() => "game_screen",
 		() => "global@spend_drops",
