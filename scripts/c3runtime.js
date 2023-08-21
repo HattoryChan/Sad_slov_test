@@ -4625,10 +4625,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Exps.ServerTime,
 		C3.Plugins.Eponesh_GameScore.Acts.AdsShowPreloader,
 		C3.Plugins.Sprite.Cnds.CompareOpacity,
-		C3.Plugins.Button.Cnds.OnClicked,
-		C3.Plugins.Button.Cnds.IsBoolInstanceVarSet,
-		C3.Plugins.Button.Acts.Destroy,
-		C3.Plugins.Text.Acts.SetPos,
 		C3.Plugins.Spritefont2.Exps.CharacterScale,
 		C3.Plugins.PlatformInfo.Cnds.IsOnMobile,
 		C3.Plugins.Mouse.Cnds.IsOverObject,
@@ -5590,6 +5586,18 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() + 150);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const n2 = p._GetNode(2);
+			const v3 = p._GetNode(3).GetVar();
+			const v4 = p._GetNode(4).GetVar();
+			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), 3, 1);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
 			const v1 = p._GetNode(1).GetVar();
 			const f2 = p._GetNode(2).GetBoundMethod();
 			const f3 = p._GetNode(3).GetBoundMethod();
@@ -5654,18 +5662,6 @@ self.C3_ExpressionFuncs = [
 			const v4 = p._GetNode(4).GetVar();
 			const v5 = p._GetNode(5).GetVar();
 			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), (v5.GetValue() + 1), 1);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const f1 = p._GetNode(1).GetBoundMethod();
-			const n2 = p._GetNode(2);
-			const v3 = p._GetNode(3).GetVar();
-			const v4 = p._GetNode(4).GetVar();
-			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), 3, 1);
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (v0.GetValue() + 150);
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -5787,11 +5783,6 @@ self.C3_ExpressionFuncs = [
 		() => 211,
 		() => 179,
 		() => 165,
-		() => "other",
-		() => 480,
-		() => -175,
-		() => 570,
-		() => -255,
 		() => 55,
 		() => 106,
 		() => 10,
