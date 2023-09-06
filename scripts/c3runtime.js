@@ -4513,10 +4513,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Pin.Acts.PinByProperties,
 		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Eponesh_GameScore.Exps.PlayerGet,
+		C3.Plugins.System.Exps.int,
 		C3.Plugins.System.Cnds.Else,
 		C3.Plugins.System.Acts.SetLayerScale,
 		C3.Plugins.System.Acts.SetLayerVisible,
-		C3.Plugins.System.Exps.int,
 		C3.Plugins.Spritefont2.Cnds.PickByUID,
 		C3.Plugins.Spritefont2.Acts.SetText,
 		C3.Plugins.Arr.Exps.At,
@@ -4551,6 +4551,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Spritefont2.Exps.Y,
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Spritefont2.Acts.SetSize,
+		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Spritefont2.Acts.SetScale,
 		C3.Plugins.Sprite.Acts.SetAnimFrame,
 		C3.Plugins.Eponesh_GameScore.Acts.AnalyticsGoal,
@@ -4597,6 +4598,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Exps.tokenat,
 		C3.Plugins.Spritefont2.Acts.SetOpacity,
 		C3.Plugins.System.Cnds.IsGroupActive,
+		C3.Plugins.System.Cnds.Every,
+		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.System.Cnds.While,
 		C3.Plugins.System.Cnds.PickNth,
 		C3.Plugins.Spritefont2.Cnds.CompareInstanceVar,
@@ -4641,7 +4644,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Cnds.OnPaymentsPurchase,
 		C3.Plugins.Eponesh_GameScore.Cnds.PlatformType,
 		C3.Plugins.Eponesh_GameScore.Cnds.OnAdsRewardedReward,
-		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.Mouse.Cnds.IsButtonDown,
 		C3.Plugins.Browser.Cnds.OnResize,
 		C3.Plugins.Mouse.Acts.SetCursor,
@@ -4650,6 +4652,8 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.AJAX.Acts.Post,
 		C3.Plugins.Eponesh_GameScore.Exps.PlayerID,
 		C3.Plugins.Date.Exps.ToString,
+		C3.Plugins.Spritefont2.Acts.SetVisible,
+		C3.Behaviors.Tween.Acts.StopTweens,
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Plugins.System.Cnds.PickByComparison,
 		C3.Plugins.Browser.Acts.ConsoleLog,
@@ -4664,15 +4668,14 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.ImagePointY,
 		C3.Plugins.Spritefont2.Acts.MoveToTop,
 		C3.Plugins.Sprite.Acts.MoveToTop,
-		C3.Plugins.Spritefont2.Acts.SetVisible,
 		C3.Plugins.Date.Exps.ToTimerHours,
 		C3.Plugins.Date.Exps.Difference,
 		C3.Plugins.Date.Exps.ToTimerMinutes,
 		C3.Plugins.Date.Exps.ToTimerSeconds,
 		C3.Plugins.System.Acts.CreateObjectByName,
 		C3.Plugins.Spritefont2.Acts.SetAngle,
-		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.Eponesh_GameScore.Cnds.IsPlayerReady,
+		C3.Plugins.Spritefont2.Cnds.IsVisible,
 		C3.Plugins.Spritefont2.Acts.SetX,
 		C3.Plugins.Sprite.Acts.MoveToBottom,
 		C3.Behaviors.DragnDrop.Cnds.OnDrop,
@@ -4693,7 +4696,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardFetch,
 		C3.Plugins.System.Exps.loadingprogress,
 		C3.Plugins.System.Cnds.OnLoadFinished,
-		C3.Plugins.System.Cnds.Every,
 		C3.Plugins.System.Cnds.EveryTick
 	];
 };
@@ -4875,7 +4877,6 @@ self.C3_JsPropNameTable = [
 	{TextForSettings2: 0},
 	{TextForShopDown: 0},
 	{TextForShopTop: 0},
-	{Sine: 0},
 	{TextForStudy: 0},
 	{scale: 0},
 	{TextForUI: 0},
@@ -4902,6 +4903,7 @@ self.C3_JsPropNameTable = [
 	{coin5: 0},
 	{words_not_do2: 0},
 	{TextForUI2: 0},
+	{darkWindow2: 0},
 	{avatar: 0},
 	{avatar2: 0},
 	{avatar3: 0},
@@ -4924,6 +4926,7 @@ self.C3_JsPropNameTable = [
 	{Xtouch: 0},
 	{buttonRating: 0},
 	{FlowersNum: 0},
+	{Sine: 0},
 	{Sine2: 0},
 	{свечение: 0},
 	{AJAX: 0},
@@ -5116,10 +5119,12 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("lvl");
 		},
-		() => 167,
+		() => 342,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => subtract(f0("lvl"), 166);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => subtract(f0("lvl"), (341 * f1(divide(f2("lvl"), 341))));
 		},
 		() => "Layer 1",
 		() => 1,
@@ -5283,10 +5288,8 @@ self.C3_ExpressionFuncs = [
 			return () => (f0("Layer 1") * (0.35 / 650));
 		},
 		() => "у",
-		() => "з",
-		() => "р",
-		() => "т",
 		() => 5,
+		() => "Собери три загаданных слова по их очереди.",
 		() => "tutorial_1",
 		p => {
 			const n0 = p._GetNode(0);
@@ -5349,6 +5352,8 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => ((n0.ExpInstVar()) ? (5) : (0));
 		},
+		() => "Загадано другое слово",
+		() => 2,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const v1 = p._GetNode(1).GetVar();
@@ -5384,7 +5389,6 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (1 - (((f0("Layer 0") / f1("Layer 0")) / 1.9) - 1));
 		},
-		() => 2,
 		() => 4,
 		() => 6,
 		() => 7,
@@ -5548,6 +5552,23 @@ self.C3_ExpressionFuncs = [
 			const v4 = p._GetNode(4).GetVar();
 			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "));
 		},
+		() => "Study",
+		() => 0.7,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => ((((n0.ExpObject()) === (0) ? 1 : 0)) ? (5) : (0));
+		},
+		() => "р",
+		() => "а",
+		() => 352,
+		() => "к",
+		() => 402,
+		() => "и",
+		() => "л",
+		() => 302,
+		() => "ж",
+		() => 252,
+		() => "о",
 		() => "word_checking_mechanics",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -5595,6 +5616,30 @@ self.C3_ExpressionFuncs = [
 			const v3 = p._GetNode(3).GetVar();
 			const v4 = p._GetNode(4).GetVar();
 			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), 3, 1);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() + 200);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const n2 = p._GetNode(2);
+			const v3 = p._GetNode(3).GetVar();
+			const v4 = p._GetNode(4).GetVar();
+			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), 4, 1);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (v0.GetValue() + 250);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			const n2 = p._GetNode(2);
+			const v3 = p._GetNode(3).GetVar();
+			const v4 = p._GetNode(4).GetVar();
+			return () => f0(f1(n2.ExpObject(v3.GetValue()), v4.GetValue(), " "), 5, 1);
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -5711,7 +5756,6 @@ self.C3_ExpressionFuncs = [
 			return () => (f0("up_icon") * 2);
 		},
 		() => 230,
-		() => 352,
 		() => 329,
 		() => 107,
 		() => 201,
@@ -5850,7 +5894,6 @@ self.C3_ExpressionFuncs = [
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (0.1 * f0());
 		},
-		() => 0.7,
 		() => 1.2,
 		() => 0.3,
 		p => {
@@ -5957,6 +6000,10 @@ self.C3_ExpressionFuncs = [
 			return () => (n0.ExpInstVar_Family() + 2);
 		},
 		() => "game_screen",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 55);
+		},
 		() => "global@spend_drops",
 		() => "default",
 		() => "global@currency",
@@ -5977,6 +6024,12 @@ self.C3_ExpressionFuncs = [
 			return () => ((and((and((and((and((and(((and((and("ID=", f0()) + "&coin="), f1("currency")) + "&garden=") + "garden"), f2(divide(f3("flowers"), 5))) + "&edrop="), f4("drop")) + "&lvl="), f5("lvl")) + "&rating_in_garden="), v6.GetValue()) + "&rating_in_money="), v7.GetValue()) + "&date=") + f8(f9(f10())));
 		},
 		() => "POST",
+		() => "Loop",
+		() => 129,
+		() => "Недостаточно воды, жмите играть, чтобы получить воду.",
+		() => 61,
+		() => 68,
+		() => 0.215,
 		() => 69,
 		() => 21,
 		() => 270,
@@ -6446,6 +6499,7 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 2);
 		},
+		() => "NoMoney",
 		() => 338.706342,
 		() => 177.059879,
 		() => 63.268405,
@@ -6525,6 +6579,11 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 2);
+		},
+		() => "StudyMenu",
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpBehavior("Loop");
 		},
 		() => "items",
 		p => {
